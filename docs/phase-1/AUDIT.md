@@ -99,7 +99,7 @@ The best material is the **Curriculum overview** (page 7) and the **Cultural syl
 
 | Video | Where | Status |
 |---|---|---|
-| "Taska PAC SOP Video 2020" (YouTube `NlSDx4HmwKE`, channel "Taska Pac") | SOP page | Public, embeddable. Published 11 Aug 2020, around the post-MCO reopening, so it may be a COVID-era SOP |
+| "Taska PAC SOP Video 2020" (YouTube `NlSDx4HmwKE`, channel "Taska Pac") | SOP page | Public, embeddable, 2:24 long. Not a COVID SOP: it's a centre tour that shows identifiable children (see `ANSWERS.md` #22) |
 | "The Magic Hat FM Production Oct 2020" (YouTube `bgFG5QUHPUs`) | Montessori Curriculum page | Public |
 | Graduation & Family Day 2013 Pt 1 and Pt 2 (YouTube `_N2aBAfwjmM`, `bgIK0x_rAkQ`) | Gallery album | Public, but the old Flash embeds on the site are broken |
 | Kidzania outing (YouTube `2aDaZDu7z9I`) | Gallery album | Private or embedding disabled |
@@ -196,7 +196,7 @@ About the `&amp;` in the title: the source `<title>Tadika &amp; Taska PAC</title
   - Holiday programmes.
   - After-school enrichment and tuition.
 
-**Questions (one list, answer what you can):**
+**Questions.** These have since been answered by online research (26 Oct 2026). See `ANSWERS.md` for each answer, its source and what is still open.
 
 *Identity*
 1. Which exact name: "Taska & Tadika PAC", "Tadika & Taska PAC" or "TAS TADIKA PAC"? And what is the legal name on the registration certificates? Note that standard BM writes "Kanak-Kanak" with a hyphen, and "Pusat Jagaan" is the usual form, not "Pusat Jaga".
