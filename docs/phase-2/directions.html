@@ -1,0 +1,304 @@
+<title>PAC Design Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Petrona:wght@400..800&family=Figtree:wght@400;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&family=Noto+Sans+SC:wght@500&text=%E6%97%A5%E6%98%87%E5%B9%BC%E5%84%BF%E5%9B%AD&display=swap">
+<style>
+/* Layout: a neutral review board; three phone-width specimens side by side, each carrying its own fixed palette */
+:root {
+  --bg: #F2F1EE;
+  --fg: #1D1D22;
+  --muted: #5B5B66;
+  --line: #D8D6D1;
+  --panel: #FFFFFF;
+  --pick: #34307A;
+  --pick-fg: #FFFFFF;
+  --ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #15151A; --fg: #ECEBF0; --muted: #A9A8B4; --line: #34343D; --panel: #1E1E25; --pick: #C9C4FF; --pick-fg: #15151A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #15151A; --fg: #ECEBF0; --muted: #A9A8B4; --line: #34343D; --panel: #1E1E25; --pick: #C9C4FF; --pick-fg: #15151A; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--ui); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 56px;
+}
+.wrap { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+
+/* Board header */
+.top { display: flex; flex-direction: column; gap: 8px; max-width: 70ch; }
+.top .kicker { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.top h1 { font-size: clamp(26px, 4vw, 36px); line-height: 1.15; margin: 0; text-wrap: balance; }
+.top p { margin: 0; color: var(--muted); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 28px; align-items: start; }
+.dir { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.dir-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.dir-head .letter { font-weight: 700; font-size: 14px; border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px; }
+.dir-head h2 { margin: 0; font-size: 20px; }
+.pill { font-size: 12px; font-weight: 600; background: var(--pick); color: var(--pick-fg); border-radius: 999px; padding: 2px 10px; }
+.idea { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Specimen frame (a phone-width screen) */
+.screen { border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+.s-bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 14px 18px; }
+.lock { display: flex; flex-direction: column; line-height: 1.1; }
+.lock .zh { font-size: 13px; letter-spacing: .12em; }
+.lang { font-size: 12px; font-weight: 600; border-radius: 999px; padding: 3px 9px; }
+.s-hero { display: flex; flex-direction: column; gap: 14px; padding: 6px 18px 22px; }
+.s-hero h3 { margin: 0; text-wrap: balance; }
+.s-hero p { margin: 0; }
+.ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; font-weight: 700; font-size: 15px; cursor: default; user-select: none; }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.ph { position: relative; width: 100%; max-width: 100%; display: flex; align-items: flex-end; justify-content: center; padding: 14px; }
+.ph span { font-size: 12px; line-height: 1.3; border-radius: 8px; padding: 6px 9px; max-width: 92%; text-align: center; }
+.s-card { margin: 0 18px 20px; padding: 16px; display: flex; flex-direction: column; gap: 4px; }
+.s-card .age { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.s-card h4 { margin: 0; }
+.s-card p { margin: 0; font-size: 15px; }
+
+/* Facts under each specimen */
+.facts { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.facts h5 { margin: 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sw { display: grid; grid-template-columns: 22px 1fr auto; gap: 6px 10px; align-items: center; font-size: 14px; }
+.sw i { width: 22px; height: 22px; border-radius: 6px; border: 1px solid rgba(0,0,0,.12); display: block; }
+.sw code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+.sw .r { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 13px; text-align: right; }
+.type { display: flex; flex-direction: column; gap: 2px; }
+.type .big { font-size: 26px; line-height: 1.1; }
+.type small { color: var(--muted); font-size: 13px; }
+.notes { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.notes b { font-weight: 600; }
+
+.decide { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 80ch; }
+.decide h2 { margin: 0; font-size: 20px; }
+.decide ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.decide p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* ---------- A. Daybreak ---------- */
+.a { --p: #FCF7F4; --i: #262347; --m: #5F5A7A; --b: #34307A; --g: #F0B429; --ap: #FCE3CF; --li: #E6E2F5;
+  background: var(--p); color: var(--i); font-family: "Figtree", var(--ui); }
+.a .lock b { font-family: "Petrona", Georgia, serif; font-weight: 700; font-size: 17px; }
+.a .lock .zh { font-family: "Noto Serif SC", "Songti SC", serif; color: var(--m); }
+.a .lang { background: var(--li); color: var(--i); }
+.a .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--m); border-top: 1px solid var(--li); padding-top: 10px; }
+.a h3 { font-family: "Petrona", Georgia, serif; font-weight: 600; font-size: 31px; line-height: 1.12; letter-spacing: -.01em; }
+.a .s-hero p { color: var(--m); font-size: 17px; }
+.a .btn.primary { background: var(--b); color: #FFFFFF; border-radius: 999px; }
+.a .btn.ghost { background: transparent; color: var(--b); border: 1.5px solid var(--b); border-radius: 999px; }
+.a .ph { aspect-ratio: 4 / 4.4; border-radius: 999px 999px 20px 20px;
+  background: radial-gradient(circle at 50% 108%, var(--g) 0 24%, var(--ap) 24.5% 58%, var(--li) 58.5%); }
+.a .ph span { background: var(--p); color: var(--i); }
+.a .s-card { background: var(--ap); border-radius: 20px; }
+.a .s-card .age { color: var(--b); }
+.a .s-card h4 { font-family: "Petrona", Georgia, serif; font-size: 21px; font-weight: 600; }
+.a-type .big { font-family: "Petrona", Georgia, serif; font-weight: 600; }
+.a-type .body { font-family: "Figtree", var(--ui); font-size: 16px; }
+
+/* ---------- B. Garden Classroom ---------- */
+.b { --p: #F4F0E6; --i: #23302A; --m: #5B665E; --l: #3D6B4B; --w: #8A5A3B; --s: #CFE3E8;
+  background: var(--p); color: var(--i); font-family: "Atkinson Hyperlegible", var(--ui); }
+.b .lock b { font-family: "Bricolage Grotesque", var(--ui); font-weight: 700; font-size: 17px; letter-spacing: -.01em; }
+.b .lock .zh { font-family: "Noto Sans SC", "PingFang SC", sans-serif; color: var(--w); }
+.b .lang { background: var(--s); color: var(--i); }
+.b .eyebrow { font-size: 13px; font-weight: 700; color: var(--w); display: flex; align-items: center; gap: 6px; }
+.b .eyebrow svg { width: 16px; height: 16px; }
+.b h3 { font-family: "Bricolage Grotesque", var(--ui); font-weight: 750; font-size: 31px; line-height: 1.08; letter-spacing: -.02em; }
+.b .s-hero p { color: var(--m); font-size: 17px; }
+.b .btn.primary { background: var(--l); color: #FFFFFF; border-radius: 14px; }
+.b .btn.ghost { background: transparent; color: var(--l); border: 1.5px solid var(--l); border-radius: 14px; }
+.b .ph { aspect-ratio: 4 / 4; border-radius: 58% 42% 52% 48% / 46% 54% 46% 54%; background-color: var(--s);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cpath d='M14 40c0-12 9-22 22-24-1 13-10 23-22 24z' fill='%233D6B4B' fill-opacity='.14'/%3E%3C/svg%3E"); }
+.b .ph span { background: var(--p); color: var(--i); }
+.b .wave { display: block; width: 100%; height: 22px; }
+.b .s-card { background: #FFFFFF; border-radius: 16px; border: 1.5px solid #E2DACB; }
+.b .s-card .age { color: var(--w); }
+.b .s-card h4 { font-family: "Bricolage Grotesque", var(--ui); font-size: 21px; font-weight: 700; }
+.b-type .big { font-family: "Bricolage Grotesque", var(--ui); font-weight: 750; letter-spacing: -.02em; }
+.b-type .body { font-family: "Atkinson Hyperlegible", var(--ui); font-size: 16px; }
+
+/* ---------- C. Clay Play ---------- */
+.c { --p: #FFF9F2; --i: #2B2A4A; --m: #5D5B78; --co: #FFB59A; --br: #B64A33; --mi: #CDEBD9; --bu: #FFE7A3;
+  background: var(--p); color: var(--i); font-family: "Nunito", var(--ui); }
+.c .lock b { font-family: "Fredoka", var(--ui); font-weight: 600; font-size: 18px; }
+.c .lock .zh { font-family: "Noto Sans SC", "PingFang SC", sans-serif; color: var(--m); }
+.c .lang { background: var(--mi); color: var(--i); }
+.c .eyebrow { align-self: flex-start; font-size: 13px; font-weight: 700; background: var(--bu); border-radius: 999px; padding: 3px 12px; }
+.c h3 { font-family: "Fredoka", var(--ui); font-weight: 600; font-size: 31px; line-height: 1.1; }
+.c .s-hero p { color: var(--m); font-size: 17px; }
+.c .btn.primary { background: var(--co); color: var(--i); border-radius: 18px;
+  box-shadow: inset 0 -4px 0 rgba(43,42,74,.14), inset 0 3px 0 rgba(255,255,255,.55), 0 6px 14px rgba(182,74,51,.18); }
+.c .btn.ghost { background: #FFFFFF; color: var(--i); border-radius: 18px;
+  box-shadow: inset 0 -4px 0 rgba(43,42,74,.08), 0 4px 10px rgba(43,42,74,.08); }
+.c .ph { aspect-ratio: 4 / 3.7; background: #FFFFFF; padding: 12px 12px 40px; transform: rotate(-2deg);
+  box-shadow: 0 10px 22px rgba(43,42,74,.14); border-radius: 6px; align-items: stretch; }
+.c .ph::before { content: ""; position: absolute; top: -10px; left: 50%; width: 84px; height: 22px; transform: translateX(-50%) rotate(3deg);
+  background: rgba(255,231,163,.85); border-radius: 3px; }
+.c .ph .film { flex: 1; border-radius: 3px; background: linear-gradient(160deg, var(--mi), var(--bu)); display: flex; align-items: flex-end; justify-content: center; padding: 10px; }
+.c .ph span { background: var(--p); color: var(--i); }
+.c .sticker { position: absolute; right: -8px; bottom: 14px; width: 62px; height: 62px; border-radius: 50%; background: var(--mi); color: var(--i);
+  display: grid; place-items: center; font-family: "Fredoka", var(--ui); font-weight: 600; font-size: 15px; transform: rotate(8deg);
+  box-shadow: inset 0 -4px 0 rgba(43,42,74,.10), 0 4px 10px rgba(43,42,74,.12); }
+.c .s-card { background: var(--bu); border-radius: 28px;
+  box-shadow: inset 0 -6px 0 rgba(43,42,74,.07), inset 0 4px 0 rgba(255,255,255,.6), 0 10px 22px rgba(43,42,74,.10); }
+.c .s-card .age { color: var(--br); }
+.c .s-card h4 { font-family: "Fredoka", var(--ui); font-size: 21px; font-weight: 600; }
+.c-type .big { font-family: "Fredoka", var(--ui); font-weight: 600; }
+.c-type .body { font-family: "Nunito", var(--ui); font-size: 16px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform .25s ease, box-shadow .25s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .c .btn:active { transform: translateY(1px) scale(.98); }
+}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="kicker">Taska &amp; Tadika PAC · 日昇幼儿园 · Phase 2</span>
+    <h1>Three directions for the new website</h1>
+    <p>Each column shows the same opening screen at phone width, the way most parents will first meet the site. Same words, same facts; only the look changes. All colour pairs pass WCAG AA.</p>
+  </header>
+
+  <div class="grid">
+    <!-- A -->
+    <section class="dir" aria-labelledby="h-a">
+      <div class="dir-head"><span class="letter">A</span><h2 id="h-a">Daybreak</h2><span class="pill">Recommended</span></div>
+      <p class="idea">日昇 means “rising sun”. Pre-dawn indigo, sunrise gold, an arch window. Calm and editorial.</p>
+      <div class="screen a">
+        <div class="s-bar"><div class="lock"><b>Taska &amp; Tadika PAC</b><span class="zh">日昇幼儿园</span></div><span class="lang">BM · EN</span></div>
+        <div class="s-hero">
+          <span class="eyebrow">Kota Kemuning · Since 1999</span>
+          <h3>A calm Montessori start for ages 2 to 6.</h3>
+          <p>Nursery, kindergarten and full-day childcare. Open 6:30 am to 7 pm, Monday to Friday.</p>
+          <div class="ctas">
+            <span class="btn primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5.1A8 8 0 1 1 21 12z"/></svg>WhatsApp us</span>
+            <span class="btn ghost">Book a visit</span>
+          </div>
+          <figure class="ph" style="margin:0"><span>Photo placeholder: small hands pouring water, window light</span></figure>
+        </div>
+        <div class="s-card"><span class="age">Ages 2–3</span><h4>Montessori Nursery</h4><p>Practical life and sensorial work in small groups.</p></div>
+      </div>
+      <div class="facts">
+        <h5>Palette</h5>
+        <div class="sw">
+          <i style="background:#FCF7F4"></i><span><code>#FCF7F4</code> paper</span><span class="r">page</span>
+          <i style="background:#262347"></i><span><code>#262347</code> ink</span><span class="r">14.0 : 1</span>
+          <i style="background:#34307A"></i><span><code>#34307A</code> indigo</span><span class="r">11.4 : 1 white</span>
+          <i style="background:#F0B429"></i><span><code>#F0B429</code> gold</span><span class="r">fills only</span>
+          <i style="background:#FCE3CF"></i><span><code>#FCE3CF</code> apricot</span><span class="r">12.0 : 1 ink</span>
+          <i style="background:#E6E2F5"></i><span><code>#E6E2F5</code> lilac</span><span class="r">11.7 : 1 ink</span>
+        </div>
+        <h5>Type</h5>
+        <div class="type a-type"><span class="big">Petrona Semibold</span><span class="body">Figtree for reading, set at 18px on the site.</span><small>Noto Serif SC for 日昇幼儿园</small></div>
+        <h5>Character</h5>
+        <ul class="notes">
+          <li><b>Shapes:</b> arch photo masks, hairline rules, small uppercase labels.</li>
+          <li><b>Motion:</b> slow fade-up, arches open on scroll, 2px hover lift.</li>
+          <li><b>Photos:</b> window light, hands on materials, the garden.</li>
+          <li><b>Watch out:</b> needs good photos to stay warm, not formal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- B -->
+    <section class="dir" aria-labelledby="h-b">
+      <div class="dir-head"><span class="letter">B</span><h2 id="h-b">Garden Classroom</h2></div>
+      <p class="idea">Wood, leaves and oat paper, like a Montessori shelf. Natural and organic.</p>
+      <div class="screen b">
+        <div class="s-bar"><div class="lock"><b>Taska &amp; Tadika PAC</b><span class="zh">日昇幼儿园</span></div><span class="lang">BM · EN</span></div>
+        <div class="s-hero">
+          <span class="eyebrow"><svg viewBox="0 0 24 24" fill="#3D6B4B" aria-hidden="true"><path d="M5 19c0-8 6-14 15-15-1 9-7 15-15 15z"/></svg>Kota Kemuning · Since 1999</span>
+          <h3>A calm Montessori start for ages 2 to 6.</h3>
+          <p>Nursery, kindergarten and full-day childcare. Open 6:30 am to 7 pm, Monday to Friday.</p>
+          <div class="ctas">
+            <span class="btn primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5.1A8 8 0 1 1 21 12z"/></svg>WhatsApp us</span>
+            <span class="btn ghost">Book a visit</span>
+          </div>
+          <figure class="ph" style="margin:0"><span>Photo placeholder: wooden materials on a low shelf</span></figure>
+        </div>
+        <svg class="wave" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12 C60 0 120 24 200 12 S340 0 400 12 V22 H0z" fill="#E9E2D2"/></svg>
+        <div style="background:#E9E2D2;padding-top:2px"><div class="s-card"><span class="age">Ages 2–3</span><h4>Montessori Nursery</h4><p>Practical life and sensorial work in small groups.</p></div></div>
+      </div>
+      <div class="facts">
+        <h5>Palette</h5>
+        <div class="sw">
+          <i style="background:#F4F0E6"></i><span><code>#F4F0E6</code> oat</span><span class="r">page</span>
+          <i style="background:#23302A"></i><span><code>#23302A</code> ink</span><span class="r">12.1 : 1</span>
+          <i style="background:#3D6B4B"></i><span><code>#3D6B4B</code> leaf</span><span class="r">6.2 : 1 white</span>
+          <i style="background:#8A5A3B"></i><span><code>#8A5A3B</code> wood</span><span class="r">5.1 : 1</span>
+          <i style="background:#CFE3E8"></i><span><code>#CFE3E8</code> sky</span><span class="r">10.4 : 1 ink</span>
+        </div>
+        <h5>Type</h5>
+        <div class="type b-type"><span class="big">Bricolage Grotesque</span><span class="body">Atkinson Hyperlegible for reading, built for legibility.</span><small>Noto Sans SC for 日昇幼儿园</small></div>
+        <h5>Character</h5>
+        <ul class="notes">
+          <li><b>Shapes:</b> pebble masks, wavy section edges, faint leaf pattern.</li>
+          <li><b>Motion:</b> leaves drift a few pixels on scroll, cards fade in.</li>
+          <li><b>Photos:</b> materials, plants, the outdoor play area.</li>
+          <li><b>Watch out:</b> green and wood is the most common Montessori look.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- C -->
+    <section class="dir" aria-labelledby="h-c">
+      <div class="dir-head"><span class="letter">C</span><h2 id="h-c">Clay Play</h2></div>
+      <p class="idea">Puffy cards, paper stickers and taped photos. Gentle claymorphism, playful.</p>
+      <div class="screen c">
+        <div class="s-bar"><div class="lock"><b>Taska &amp; Tadika PAC</b><span class="zh">日昇幼儿园</span></div><span class="lang">BM · EN</span></div>
+        <div class="s-hero">
+          <span class="eyebrow">Kota Kemuning · Since 1999</span>
+          <h3>A calm Montessori start for ages 2 to 6.</h3>
+          <p>Nursery, kindergarten and full-day childcare. Open 6:30 am to 7 pm, Monday to Friday.</p>
+          <div class="ctas">
+            <span class="btn primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5.1A8 8 0 1 1 21 12z"/></svg>WhatsApp us</span>
+            <span class="btn ghost">Book a visit</span>
+          </div>
+          <figure class="ph" style="margin:10px 6px 0"><div class="film"><span>Photo placeholder: art and craft table</span></div><div class="sticker">2–6</div></figure>
+        </div>
+        <div class="s-card"><span class="age">Ages 2–3</span><h4>Montessori Nursery</h4><p>Practical life and sensorial work in small groups.</p></div>
+      </div>
+      <div class="facts">
+        <h5>Palette</h5>
+        <div class="sw">
+          <i style="background:#FFF9F2"></i><span><code>#FFF9F2</code> warm white</span><span class="r">page</span>
+          <i style="background:#2B2A4A"></i><span><code>#2B2A4A</code> ink</span><span class="r">13.1 : 1</span>
+          <i style="background:#FFB59A"></i><span><code>#FFB59A</code> coral</span><span class="r">8.0 : 1 ink</span>
+          <i style="background:#B64A33"></i><span><code>#B64A33</code> brick</span><span class="r">5.2 : 1 white</span>
+          <i style="background:#CDEBD9"></i><span><code>#CDEBD9</code> mint</span><span class="r">10.8 : 1 ink</span>
+          <i style="background:#FFE7A3"></i><span><code>#FFE7A3</code> butter</span><span class="r">11.2 : 1 ink</span>
+        </div>
+        <h5>Type</h5>
+        <div class="type c-type"><span class="big">Fredoka Semibold</span><span class="body">Nunito for reading, round and friendly.</span><small>Noto Sans SC for 日昇幼儿园</small></div>
+        <h5>Character</h5>
+        <ul class="notes">
+          <li><b>Shapes:</b> 32px puffy cards, stickers, tape-strip photo frames.</li>
+          <li><b>Motion:</b> buttons press in, stickers wobble once on hover.</li>
+          <li><b>Photos:</b> polaroid frames, children's artwork (with consent).</li>
+          <li><b>Watch out:</b> can read as “for children” when parents are the readers.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="decide" aria-labelledby="h-d">
+    <h2 id="h-d">What's needed to start building</h2>
+    <ol>
+      <li>Pick a direction: A, B or C, or a mix (for example A's colours with B's leaf pattern).</li>
+      <li>Approve the sitemap: 15 pages in Bahasa Malaysia and English. The gallery waits until there are photos with parental consent, and transport moves onto the Admissions page.</li>
+      <li>OK to install Node.js LTS (free) on the build machine.</li>
+    </ol>
+    <p>Photos above are drawn placeholders. The real site uses only photos the centre supplies, and no identifiable child without written parental consent.</p>
+  </section>
+</div>
