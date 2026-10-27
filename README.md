@@ -1,164 +1,117 @@
 # Taska & Tadika PAC website
 
-The new website for Taska & Tadika PAC (日昇幼儿园), a Montessori nursery, kindergarten and childcare centre in Kota Kemuning, Shah Alam. It replaces the old WordPress site at www.taskapac.com.
+A one-page site for Taska & Tadika, Pusat Jaga Kanak Kanak PAC (Kota Kemuning, Shah Alam).
+Plain HTML, CSS and JavaScript with no build step. Every file sits at the top level, so you can drag the whole set into a GitHub repository and deploy it on Cloudflare Pages as it is.
 
-- **Languages:** Bahasa Malaysia (`/ms`) and English (`/en`). Visitors to `/` are sent to their browser's language, and their choice is remembered.
-- **Stack:**
-  - Next.js 16.4 (App Router, every page statically generated), TypeScript.
-  - Tailwind CSS 4 and shadcn/ui.
-  - The enquiry form uses a Server Action that sends email through Resend.
-- **Hosting:** Cloudflare Workers, through the OpenNext adapter (`@opennextjs/cloudflare`).
-- **Design:** "Daybreak". 日昇 means rising sun, so the palette is indigo, sunrise gold, apricot and lilac. Headings use Petrona, body text uses Figtree. See `docs/phase-2/BRIEF.md`.
+## The idea
 
-## Run it on your computer
+The page is set on Montessori classroom materials. A Three.js scene of the pink tower, number rods, golden beads, blue geometric solids, colour tablets and brown stair plays behind the whole page. It rearranges itself as you scroll:
 
-You need Node.js 20 or newer.
+| Section | Ground colour (material) | What the 3D materials do |
+| --- | --- | --- |
+| Hero | Pink (pink tower) | The tower is placed one cube at a time, largest first |
+| Approach | Beech (wooden shelf) | The cubes are laid out by size; golden ten-bars drift in |
+| Programmes | Blue (ten-bead blue) | Number rods form a staircase; the rod for the chosen age steps forward |
+| Curriculum | Green (unit-bead green) | Everything sits on a long shelf that slides with the horizontal panels |
+| Moments | Red (red rods) | One hundred golden beads form a hundred-square |
+| Hours | Gold (golden beads) | Colour tablets form a clock; two rods show the live time in Shah Alam |
+| Visit | Beech | A few tablets and solids rest at the edge of the desk |
+| Footer | Ink | The pink tower is rebuilt with the solids in orbit |
 
-```bash
-npm install
-npm run dev
-```
+Other moments: the headline is coloured like the Montessori movable alphabet (consonants blue, vowels red), the scroll progress bar is a number rod, the age picker is a number rod, and the enquiry form is an exercise-book page.
 
-Open http://localhost:3000. To test the plain Next.js production build:
+## Files
 
-```bash
-npm run build:next
-npm start
-```
+| File | What it is |
+| --- | --- |
+| `index.html` | All page content, SEO tags and structured data (Google business info) |
+| `styles.css` | Colours, type and layout. Colour tokens are at the top in `:root` |
+| `main.js` | Smooth scroll (Lenis), scroll animations (GSAP), age picker, menu, form |
+| `charts.js` | The interactive charts (Bklit-style, plain SVG) and their data |
+| `scene.js` | The Three.js background |
+| `favicon.svg`, `apple-touch-icon.png` | Browser and phone icons |
+| `og-image.png` | Preview image shown when the link is shared on WhatsApp or Facebook |
+| `photo-*.jpg` (20 files) | The centre's own photos, compressed (see Photos below) |
+| `site.webmanifest`, `robots.txt`, `sitemap.xml` | Standard site files |
+| `404.html` | Page shown for broken links |
+| `_headers` | Cloudflare security headers and caching rules |
 
-To test the real Cloudflare build in Cloudflare's local runtime (workerd), at http://localhost:8787:
+## Deploy
 
-```bash
-npm run preview
-```
+1. Create a new GitHub repository. Click **Add file**, then **Upload files**, drag in every file above, and commit.
+2. In Cloudflare, open **Workers & Pages**, then **Create**, then **Pages**, then **Connect to Git**, and pick the repository.
+3. Set **Framework preset** to `None`, leave **Build command** empty, and set **Build output directory** to `/`.
+4. Deploy. Cloudflare reads `_headers` automatically.
+5. Add the custom domain (`taskapac.com` and `www.taskapac.com`) under the project's **Custom domains** tab.
 
-`npm run build` produces the Cloudflare bundle in `.open-next/`. It runs `next build` first, then the OpenNext adapter. OpenNext warns that Windows isn't fully supported. It built and ran fine on Windows here, and Cloudflare's own build machines run Linux.
+## Photos
 
-## Edit text
+The 20 `photo-*.jpg` files are the centre's own pictures, taken from the photo albums on its old WordPress site. Each one was resized to at most 1200 px wide and re-saved as a JPEG, cutting the set from 6.9 MB to about 1.2 MB. Re-saving also removed the camera metadata (dates, device and any location) from the photos of the children. The site no longer depends on the old WordPress server, so you can switch taskapac.com over to Cloudflare whenever you are ready.
 
-All words on the site live in two files, one per language. Keep them in step: the build fails if the BM file is missing a key that the English file has.
+| File | Where it appears |
+| --- | --- |
+| `photo-nursery-water-play.jpg` | Programmes: Montessori Nursery |
+| `photo-multiplication-board.jpg` | Programmes: Montessori Kindergarten |
+| `photo-science-materials.jpg` | Programmes: Bridging Class |
+| `photo-walking-on-the-line.jpg` | Curriculum: Practical Life |
+| `photo-sensorial.jpg` | Curriculum: Sensorial |
+| `photo-maths-decimals.jpg` | Curriculum: Mathematics |
+| `photo-nursery-phonics.jpg` | Curriculum: Literacy |
+| `photo-chicks-hatching.jpg` | Curriculum: Culture & Science; Moments |
+| `photo-free-drawing.jpg` | Curriculum: Creative Arts |
+| `photo-rainforest-science.jpg` | Curriculum: Bridging |
+| `photo-bomba-visit.jpg` | Moments |
+| `photo-botanic-negara.jpg` | Moments |
+| `photo-petrosains.jpg` | Moments |
+| `photo-deepavali.jpg` | Moments |
+| `photo-chap-goh-meh.jpg` | Moments |
+| `photo-kuih-bakul.jpg` | Moments |
+| `photo-butterflies.jpg` | Moments |
+| `photo-swimming.jpg` | Moments |
+| `photo-ostrich-farm.jpg` | Moments |
+| `photo-kidzania.jpg` | Moments |
 
-| What | Where |
-|---|---|
-| English text | `src/content/en.json` |
-| Bahasa Malaysia text | `src/content/ms.json` |
-| Phone, email, addresses, hours, Facebook, video | `src/content/site.ts` |
+To swap a photo, upload a new file with the same name, or change the file name in `index.html` (and in the `ROOMS` list in `main.js` for the three Programmes photos). Several of the originals are small (450 × 600) WhatsApp pictures, so newer, larger photos from the centre (2023 to 2026) would make the page stronger. The newest public album is from 2020.
 
-Text in square brackets, such as `[FEES TO CONFIRM]`, shows on the site as a yellow "to confirm" chip. Replace the whole bracket, brackets included, with the real fact once the centre confirms it. `docs/CONTENT-CHECKLIST.md` lists every one.
+## Please confirm with the client
 
-## Add photos
+Everything on the page came from the centre's own website, its two Facebook pages, its Google Business listing and a Kiddy123 feature. These points are worth a quick check:
 
-1. Only use photos the centre supplies. Children must not be identifiable unless the centre has **written parental consent** for that photo.
-2. Put the file in `public/photos/`, for example `public/photos/garden.jpg`. Use JPG or WebP, around 1600 px wide. The site resizes and compresses it automatically.
-3. Where a page shows a "Photo to come" arch, pass the file to it, for example in `src/app/[lang]/page.tsx`:
+- **Phone and WhatsApp:** 016-272 9666 (from Google and Facebook). Every "WhatsApp" button uses this number.
+- **Email:** amypac2008@gmail.com (from Facebook).
+- **Address:** 1, Jalan Anggerik Aranda 31/34. One Facebook page says 31/170C.
+- **Hours:** Monday to Friday 6:30 am to 7 pm, Saturday 8 am to 1 pm, Sunday closed (from Google). The live "Open now" badge and the week chart use these.
+- **Ages:** 18 months to 6 years; Taska nursery 18 months to 4, Tadika kindergarten 4 to 6, Bridging class at 6.
+- **Languages:** "Bahasa Melayu, Chinese and English practice" in the Bridging card is based on album names (BM, Chinese and Maths weekly lessons; Scholastic English). Confirm or remove it in `main.js` (`ROOMS.bridging.list`).
+- **Inclusion, technology-aided classrooms, women-owned:** from Facebook, Kiddy123 and Google respectively.
+- **Logo:** the stacked-blocks mark is a placeholder. Swap in the real logo if there is one (`.nav__mark` in `index.html`, plus `favicon.svg`).
+- **Not included on purpose:** fees, parent testimonials, awards and an intake year, because none were published. Add them only with the client's wording and permission.
 
-   ```tsx
-   <ArchPhoto src="/photos/garden.jpg" caption={h.photo} placeholderLabel={t.common.photoToCome} priority />
-   ```
+## Editing guide
 
-   The caption text becomes the photo's alt text, so make sure it describes the photo.
+- **Text:** all in `index.html`.
+- **Colours:** `:root` and the `html[data-theme=...]` rules at the top of `styles.css`.
+- **Opening hours:** `HOURS` in `main.js`, the hours text in `index.html` (hero status, Hours section, footer) and `openingHoursSpecification` in the structured data in `index.html`.
+- **Programmes shown by the age picker:** `ROOMS` in `main.js`.
+- **Chart data:** `YEARS` and `ALBUMS` in `charts.js`.
+- **3D arrangements:** the `pose()` function in `scene.js`, one `case` per section.
+- **Security headers:** `_headers` allows only the two small inline scripts at the top of `index.html`, by hash. If you change either of them, open the page, read the Content Security Policy error in the browser console (it prints the new `sha256-...` value), and replace the old value in `_headers`.
 
-## Turn on the video tour
+## Libraries
 
-The 2020 tour video on YouTube shows children's faces, so it's switched off. Once the centre confirms written consent from every family in it, set `tourVideo.enabled` to `true` in `src/content/site.ts`. It then appears on "A day at PAC" as a privacy-enhanced YouTube player that loads only when clicked, with captions on.
+All loaded from jsDelivr with pinned versions and integrity hashes:
 
-## The booking form
+- GSAP 3.15.0 with ScrollTrigger and SplitText
+- Lenis 1.3.26 (smooth scroll by darkroom.engineering)
+- Three.js r180
 
-Requests are checked on the server and then emailed to the centre. Nothing is stored in a database.
+Fonts: Lexend (designed to make reading easier) and Playwrite GB S (school handwriting) from Google Fonts.
 
-- **Spam protection:**
-  - A hidden honeypot field.
-  - A minimum fill time.
-  - A per-connection rate limit.
-  - Optionally, Cloudflare Turnstile.
-- **Data minimisation:** the form never asks for a child's name, MyKid number or medical details.
-- **Setup:** for local testing, copy `.env.example` to `.env.local` and fill in the values. On Cloudflare, see the next section. Without `RESEND_API_KEY` the form says the email wasn't sent: in development it reports success and logs a note, and in production it tells parents to WhatsApp instead.
+## Accessibility and performance
 
-## Deploy to Cloudflare
-
-The Worker **taksapac** is connected to the GitHub repository ContemporaryPossum/TaksaPAC. Every push to `main` builds and deploys automatically, using the dashboard's default commands:
-
-| Setting (Workers & Pages → taksapac → Settings → Builds) | Value |
-|---|---|
-| Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Root directory | `/` |
-
-Files that make this work:
-
-- `wrangler.jsonc`: the Worker name (`taksapac`, which must match the dashboard), the entry file `.open-next/worker.js` and the static assets.
-- `open-next.config.ts`: serves the prerendered pages from Workers static assets. No R2 bucket or KV namespace is needed.
-- `public/_headers`: long-term caching for build files and fonts.
-
-**Email and spam keys.** Set these in **Workers & Pages → taksapac → Settings**:
-
-| Name | Where | Type |
-|---|---|---|
-| `RESEND_API_KEY` | Variables and secrets | Secret |
-| `RESEND_FROM` | Variables and secrets | Text |
-| `ENQUIRY_TO` | Variables and secrets | Text (optional, defaults to amypac2008@gmail.com) |
-| `TURNSTILE_SECRET_KEY` | Variables and secrets | Secret (optional) |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Builds → Variables and secrets | Build variable (optional). It's baked into the page at build time |
-
-`keep_vars` in `wrangler.jsonc` keeps dashboard variables in place on every deploy. After adding variables, redeploy by pushing a commit, or use **Deployments → Retry build**.
-
-**Custom domain.** In **Workers & Pages → taksapac → Settings → Domains & Routes → Add → Custom domain**, add `www.taskapac.com`. The domain's DNS must be on Cloudflare (see `docs/LAUNCH-CHECKLIST.md`).
-
-**What the site needs at runtime:**
-- The language routing and old-URL redirects live in `src/proxy.ts`. OpenNext runs Next.js 16's proxy on Workers, and labels this support "experimental".
-- If a future Next or OpenNext update breaks it, rename `src/proxy.ts` to `src/middleware.ts` and its function from `proxy` to `middleware`. The code only uses standard web APIs.
-- Pages are fully static. Next's Cache Components feature is off because the static-assets cache doesn't support `"use cache"`.
-
-## Old website addresses
-
-`src/proxy.ts` handles every old WordPress URL, using the map in `src/lib/legacy.ts`:
-- Old pages such as `/?page_id=5` get a permanent (301) redirect to the matching new page.
-- Old gallery pages go to "A day at PAC".
-- Old media files (`/wp-content/...`), feeds and WordPress admin addresses return **410 Gone**, so search engines drop the old photos of children.
-
-The full audited list is `docs/phase-1/redirects.csv`.
-
-## Project map
-
-```
-src/
-  app/
-    [lang]/            one folder per page; [lang] is "en" or "ms"
-    sitemap.ts, robots.ts, icon.svg
-  components/          header, footer, cards, form, embeds
-  components/ui/       shadcn/ui components, sized for touch
-  content/             en.json, ms.json, site.ts  ← edit these
-  lib/                 language routes, dictionary, form action, old-URL map
-  proxy.ts             language detection, BM addresses, old-URL redirects
-docs/
-  phase-1/             audit of the old site and online research
-  phase-2/             brief and design directions
-  CONTENT-CHECKLIST.md facts still needed from the centre
-  LAUNCH-CHECKLIST.md  steps to go live
-```
-
-BM pages have BM addresses (for example `/ms/tentang-kami`). The proxy maps them onto the English-named folders, and `src/lib/i18n.ts` holds the table.
-
-## Checks done (27 October 2026)
-
-- `npm run build`: all 52 routes prerender without errors. ESLint and TypeScript pass.
-- **Routing:** language detection, BM addresses and the BM↔EN switch work. All old-URL types redirect or return 410. Unknown pages return 404.
-- **Phone, tablet and desktop:** pages checked at 390, 768 and 1440 px wide, with no sideways scrolling and no console errors.
-- **Accessibility basics:**
-  - Body text is 18 px and tap targets are at least 44 px.
-  - Every colour pair passes WCAG AA.
-  - There's a skip link and visible focus outlines.
-  - The mobile menu closes with Esc and returns focus to the menu button.
-  - Animations are off when "reduce motion" is set.
-- **Booking form:**
-  - Server-side errors appear in a summary at the top and next to each field.
-  - Answers are kept after an error.
-  - The email path is not tested yet, because it needs a real Resend key.
-
-- **Cloudflare build:** `npm run build` (OpenNext) completes. On the local Workers runtime:
-  - All pages load in both languages.
-  - BM addresses, old-URL redirects, 410s and 404s work.
-  - Security headers and the language cookie are present.
-  - The booking form's server code runs: it validates and reaches the email step.
-
-**Not yet done:** Lighthouse scores, automated Playwright tests and a full security review. These are Phase 5 in the brief.
+- `prefers-reduced-motion` turns off smooth scroll, pinning and the moving 3D scene. The page then shows a still 3D tower and every section in its final state.
+- A **Pause motion** button (bottom left) stops everything that moves on its own, and remembers the choice.
+- Every chart has a hidden data table for screen readers; the ring segments and bars work with the keyboard.
+- Colour pairs meet WCAG AA contrast. Focus outlines are visible on every control.
+- The 3D scene caps pixel density, drops resolution on slow devices, and pauses when the tab is hidden.
+- The Google map only loads when someone presses **Show the map**, so Google cookies are not set on page load.

@@ -1,0 +1,13 @@
+{
+  "name": "Taska & Tadika PAC",
+  "short_name": "PAC",
+  "description": "Montessori nursery, kindergarten and full-day care in Kota Kemuning, Shah Alam.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F3B5C3",
+  "theme_color": "#F3B5C3",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
