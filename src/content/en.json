@@ -1,0 +1,773 @@
+{
+  "langName": "English",
+  "langShort": "EN",
+  "common": {
+    "home": "Home",
+    "mainNav": "Main",
+    "skip": "Skip to main content",
+    "whatsapp": "WhatsApp us",
+    "whatsappPrefill": "Hi Taska & Tadika PAC, I'd like to know more about your programmes.",
+    "bookVisit": "Book a visit",
+    "call": "Call",
+    "email": "Email",
+    "menu": "Menu",
+    "close": "Close",
+    "switchLanguage": "Bahasa Malaysia",
+    "switchLanguageLabel": "Baca dalam Bahasa Malaysia",
+    "since": "Since 1999",
+    "location": "Kota Kemuning, Shah Alam",
+    "openInMaps": "Open in Google Maps",
+    "photoToCome": "Photo to come",
+    "learnMore": "Find out more",
+    "seeAll": "See all",
+    "ages": "Ages",
+    "back": "Back to all programmes",
+    "registration": "Registration is open from May to November 2026."
+  },
+  "nav": {
+    "about": "About",
+    "curriculum": "Montessori",
+    "programmes": "Programmes",
+    "enrichment": "Enrichment",
+    "day": "A day at PAC",
+    "admissions": "Admissions",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "visit": "Book a visit",
+    "privacy": "Privacy notice"
+  },
+  "hours": {
+    "title": "Opening hours",
+    "mon-fri": "Monday to Friday",
+    "sat": "Saturday",
+    "sun": "Sunday",
+    "closed": "Closed",
+    "holidays": "Closed on federal and Selangor public holidays."
+  },
+  "locations": {
+    "title": "Two buildings on Jalan Anggerik Aranda",
+    "taska": "Taska PAC",
+    "taskaNote": "Nursery and childcare",
+    "tadika": "Tadika PAC",
+    "tadikaNote": "Kindergarten"
+  },
+  "footer": {
+    "about": "A Montessori nursery, kindergarten and childcare centre in Kota Kemuning, Shah Alam.",
+    "visit": "Visit",
+    "contact": "Contact",
+    "explore": "Explore",
+    "rights": "All rights reserved."
+  },
+  "meta": {
+    "home": {
+      "title": "Montessori nursery, kindergarten and childcare in Kota Kemuning",
+      "description": "Taska & Tadika PAC (日昇幼儿园) is a Montessori nursery, kindergarten and childcare centre in Kota Kemuning, Shah Alam, since 1999. Open 6:30 am to 7 pm on weekdays."
+    },
+    "about": {
+      "title": "About us and our Montessori philosophy",
+      "description": "How Taska & Tadika PAC began in 1999, our two buildings in Kota Kemuning, and the Montessori ideas behind every classroom."
+    },
+    "curriculum": {
+      "title": "Montessori curriculum",
+      "description": "Practical life, sensorial, mathematics, language, cultural studies and creative arts: what children do in each area at PAC."
+    },
+    "programmes": {
+      "title": "Programmes by age",
+      "description": "Montessori Nursery (2 to 3), Montessori Kindergarten (4 to 6), the Full Montessori class (2 to 6), and full-day childcare in Kota Kemuning."
+    },
+    "nursery": {
+      "title": "Montessori Nursery for ages 2 to 3",
+      "description": "A gentle first classroom for 2 and 3 year olds at Taska PAC, Kota Kemuning: practical life, sensorial work, songs and stories in small groups."
+    },
+    "kindergarten": {
+      "title": "Montessori Kindergarten for ages 4 to 6",
+      "description": "Montessori kindergarten at Tadika PAC, Kota Kemuning, with phonics, hands-on maths and preparation for Standard One."
+    },
+    "fullMontessori": {
+      "title": "Full Montessori class for ages 2 to 6",
+      "description": "A mixed-age Montessori class at PAC where children aged 2 to 6 learn side by side, as Maria Montessori intended."
+    },
+    "childcare": {
+      "title": "Childcare and day care",
+      "description": "Full-day childcare and morning or afternoon day care at Taska PAC, Kota Kemuning. Open 6:30 am to 7 pm on weekdays and Saturday mornings."
+    },
+    "enrichment": {
+      "title": "Enrichment classes",
+      "description": "Speech and drama, Mandarin, Bahasa Malaysia, science in English, art and music, plus outings and science projects at PAC."
+    },
+    "day": {
+      "title": "A day at PAC",
+      "description": "What a day looks like at Taska & Tadika PAC, from the 6:30 am drop-off to the Montessori work cycle, meals and pick-up."
+    },
+    "admissions": {
+      "title": "Admissions, fees and transport",
+      "description": "How to enrol at Taska & Tadika PAC: visit, register and settle in. Fees, transport and what your child needs to bring."
+    },
+    "visit": {
+      "title": "Book a visit",
+      "description": "Book a visit to Taska & Tadika PAC in Kota Kemuning, or message us on WhatsApp. We'll reply to confirm a time."
+    },
+    "faq": {
+      "title": "Questions parents ask",
+      "description": "Ages, hours, languages, meals, transport, fees and Standard One preparation at Taska & Tadika PAC."
+    },
+    "contact": {
+      "title": "Contact and directions",
+      "description": "Find Taska & Tadika PAC at Jalan Anggerik Aranda, Kota Kemuning, Shah Alam. Call or WhatsApp 016-272 9666."
+    },
+    "privacy": {
+      "title": "Privacy notice",
+      "description": "How Taska & Tadika PAC handles personal data under Malaysia's Personal Data Protection Act 2010."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page has moved or no longer exists."
+    }
+  },
+  "home": {
+    "eyebrow": "Kota Kemuning · Since 1999",
+    "title": "A calm Montessori start for ages 2 to 6.",
+    "lead": "Taska & Tadika PAC is a Montessori nursery, kindergarten and childcare centre in Kota Kemuning, Shah Alam. We open at 6:30 am and close at 7 pm on weekdays.",
+    "photo": "A child's hands pouring water at a low table, morning light",
+    "montessori": {
+      "eyebrow": "How we teach",
+      "title": "Montessori, in plain words",
+      "lead": "What it looks like in our classrooms every day.",
+      "points": [
+        {
+          "title": "Children choose their work",
+          "body": "Materials sit on low, open shelves. A child picks an activity, works with it for as long as they need, then puts it back for the next friend."
+        },
+        {
+          "title": "Hands first, then ideas",
+          "body": "Counting rods, sandpaper letters and pouring jugs let children learn by touching and doing before they write anything down."
+        },
+        {
+          "title": "Teachers guide",
+          "body": "Teachers prepare the room, show each material, then step back and watch for what each child is ready to learn next."
+        },
+        {
+          "title": "Small groups",
+          "body": "Classes are kept small so each child gets individual attention."
+        }
+      ]
+    },
+    "programmes": {
+      "eyebrow": "Programmes",
+      "title": "A place for every age from 2 to 6",
+      "lead": "Choose a half-day class, a full day with childcare, or both."
+    },
+    "enrichment": {
+      "eyebrow": "Beyond the classroom",
+      "title": "Extra classes and projects",
+      "items": [
+        "Speech and drama",
+        "Mandarin",
+        "Bahasa Malaysia",
+        "Science in English",
+        "Art and music",
+        "Outings"
+      ]
+    },
+    "day": {
+      "eyebrow": "A day at PAC",
+      "title": "From the first drop-off to the last pick-up",
+      "lead": "Working parents can drop off from 6:30 am and collect until 7 pm."
+    },
+    "visit": {
+      "eyebrow": "Visit us",
+      "title": "Come and see the classrooms",
+      "lead": "The best way to choose a preschool is to visit. Send us a WhatsApp message or book a time, and we'll show you around."
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "What parents ask first"
+    }
+  },
+  "programmes": {
+    "eyebrow": "Programmes",
+    "title": "Programmes by age",
+    "lead": "PAC runs Montessori classes for children aged 2 to 6, plus childcare for families who need a full day. Each programme below has its own page.",
+    "items": {
+      "nursery": {
+        "name": "Montessori Nursery",
+        "ages": "2–3",
+        "building": "Taska PAC",
+        "summary": "A gentle first classroom with practical life, sensorial work, songs and stories.",
+        "intro": "For 2 and 3 year olds, the first classroom is about feeling safe, doing things for themselves and getting used to a group. The Nursery is built around that.",
+        "sections": [
+          {
+            "title": "What children do",
+            "items": [
+              "Practical life: pouring, spooning, buttoning, washing hands and tidying up, the everyday skills that build independence.",
+              "Sensorial work: sorting by colour, size, shape and texture to sharpen the senses.",
+              "Language: songs, rhymes and stories that grow vocabulary.",
+              "Music and movement, art and craft, and role play."
+            ]
+          },
+          {
+            "title": "How it runs",
+            "items": [
+              "Small groups in our Taska building on Jalan Anggerik Aranda 31/34.",
+              "Session times: [SESSION TIMES TO CONFIRM]",
+              "Full-day childcare is available for working parents, from 6:30 am to 7 pm."
+            ]
+          }
+        ]
+      },
+      "kindergarten": {
+        "name": "Montessori Kindergarten",
+        "ages": "4–6",
+        "building": "Tadika PAC",
+        "summary": "Phonics, hands-on maths and thematic projects, with preparation for Standard One.",
+        "intro": "In the kindergarten years children start reading, writing and working with numbers. At PAC they get there with Montessori materials, a carefully graded phonics programme and topic-based projects, following the National Preschool Curriculum (KSPK).",
+        "sections": [
+          {
+            "title": "What children learn",
+            "items": [
+              "Reading and writing through Montessori phonics: sandpaper letters and the moveable alphabet, then the Pink, Blue and Green reading series.",
+              "Mathematics with concrete materials, from number rods to the multiplication and division boards.",
+              "Thematic lessons and science that build responsibility and discipline.",
+              "Speech and drama for confident speaking."
+            ]
+          },
+          {
+            "title": "Getting ready for Standard One",
+            "items": [
+              "Six year olds join the bridging class, which prepares them for Primary One.",
+              "The focus is reading, writing, speaking and problem solving in mathematics.",
+              "Lessons follow the National Preschool Curriculum (KSPK)."
+            ]
+          },
+          {
+            "title": "How it runs",
+            "items": [
+              "Tadika PAC, our kindergarten building, is at No. 1, Jalan Anggerik Aranda 31/170C.",
+              "Session times: [SESSION TIMES TO CONFIRM]",
+              "After-class childcare is available until 7 pm."
+            ]
+          }
+        ]
+      },
+      "fullMontessori": {
+        "name": "Full Montessori class",
+        "ages": "2–6",
+        "building": "PAC",
+        "summary": "One mixed-age class where younger children learn from older ones, as Montessori intended.",
+        "intro": "In a Full Montessori class, children from 2 to 6 share one prepared room. Younger children watch and copy the older ones; older children grow in patience and leadership by helping. Our founder calls this natural learning.",
+        "sections": [
+          {
+            "title": "Why mixed ages",
+            "items": [
+              "Children move through the materials at their own pace, not their age group's.",
+              "Older children practise what they know by showing it to younger ones.",
+              "Care, cooperation and leadership grow out of daily life together."
+            ]
+          },
+          {
+            "title": "What's in the day",
+            "items": [
+              "A long, uninterrupted Montessori work period.",
+              "Speech and drama, music and movement.",
+              "Science, cultural topics and outdoor play."
+            ]
+          },
+          {
+            "title": "How it runs",
+            "items": [
+              "Session times: [SESSION TIMES TO CONFIRM]",
+              "Ask us about places in this class."
+            ]
+          }
+        ]
+      },
+      "childcare": {
+        "name": "Childcare and day care",
+        "ages": "[AGES TO CONFIRM]",
+        "building": "Taska PAC",
+        "summary": "Full-day care from 6:30 am to 7 pm, or morning or afternoon day care.",
+        "intro": "Many PAC families have both parents working. Childcare wraps around the Montessori class, so your child can be dropped off early, stay through lunch and be collected after work.",
+        "sections": [
+          {
+            "title": "Options",
+            "items": [
+              "Full day: Monday to Friday, 6:30 am to 7 pm.",
+              "Day care: morning or afternoon.",
+              "Saturday: 8 am to 1 pm."
+            ]
+          },
+          {
+            "title": "Meals",
+            "items": [
+              "Balanced, home-cooked meals. Lunch is provided for full-day children, and dinner for children staying late.",
+              "Meal details: [HALAL STATUS AND DIETARY OPTIONS TO CONFIRM]"
+            ]
+          },
+          {
+            "title": "What to bring",
+            "items": [
+              "A face towel and a bath towel.",
+              "At least three sets of spare clothes.",
+              "Milk and a water bottle.",
+              "We'll confirm the current list when you register."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "about": {
+    "eyebrow": "About PAC",
+    "title": "A small Montessori school, run by the same founder since 1999",
+    "photo": "The garden at Taska PAC, with tree-stump seats",
+    "story": {
+      "title": "How PAC started",
+      "paragraphs": [
+        "Ms. Amy opened PAC's first Montessori-based taska in Kota Kemuning in 1999.",
+        "She chose small groups so that teachers could focus on each child. In 2007 a tadika followed in a second building on the same road, for children aged 5 and 6.",
+        "Today PAC runs age-grouped classes, a Full Montessori class where children aged 2 to 6 learn together, and full-day childcare for working families."
+      ]
+    },
+    "buildings": {
+      "title": "Two buildings, one school",
+      "body": "Taska PAC houses the nursery, the Full Montessori class and childcare. Tadika PAC, a short walk along Jalan Anggerik Aranda, houses the kindergarten."
+    },
+    "philosophy": {
+      "eyebrow": "Philosophy",
+      "title": "What we believe about young children",
+      "commitment": "Our commitment: the development of the whole child.",
+      "points": [
+        {
+          "title": "Children build themselves",
+          "body": "Through their senses and their own work, children construct who they are. Our job is to give them the right environment and the time to do it."
+        },
+        {
+          "title": "A prepared environment",
+          "body": "Every room is calm, orderly and set up so children can reach, choose and put back their materials without help."
+        },
+        {
+          "title": "The teacher as guide",
+          "body": "Montessori teachers are not there to command. They prepare the room, give short, careful lessons and observe each child closely."
+        },
+        {
+          "title": "Respect for work and for others",
+          "body": "Children learn to respect their own work and their friends' work, and to find joy in finishing a task."
+        },
+        {
+          "title": "Behaviour as a message",
+          "body": "When a child struggles, it usually means a need isn't being met. We observe first, then adjust."
+        },
+        {
+          "title": "Creativity and nature",
+          "body": "Children are free to express themselves through art, music, story and play, and to spend time with living things."
+        }
+      ]
+    },
+    "materials": "Our Montessori materials come from specialist suppliers in several countries, including India and the Netherlands."
+  },
+  "curriculum": {
+    "eyebrow": "Montessori curriculum",
+    "title": "Six areas of learning",
+    "lead": "Montessori classrooms are organised into areas. Children move between them, choosing work from each, and teachers keep track of how every child is progressing.",
+    "areas": [
+      {
+        "id": "practical-life",
+        "title": "Practical life",
+        "body": "Everyday tasks that build independence, coordination and concentration.",
+        "examples": [
+          "Pouring, washing and polishing",
+          "Tying and buttoning",
+          "Preparing snacks, like sandwich rolls and fruit salad",
+          "Putting work back where it belongs"
+        ]
+      },
+      {
+        "id": "sensorial",
+        "title": "Sensorial",
+        "body": "Materials that train each sense, so children notice differences and put them into words.",
+        "examples": [
+          "Grading by size, colour and shape",
+          "Matching sounds, smells and tastes",
+          "Feeling texture, temperature and weight",
+          "Recognising objects by touch alone"
+        ]
+      },
+      {
+        "id": "mathematics",
+        "title": "Mathematics",
+        "body": "Number concepts built step by step with concrete materials, before moving to paper.",
+        "examples": [
+          "Number rods",
+          "Sets, sorting and sequencing",
+          "The decimal system, for six year olds",
+          "Mixed sums, and the multiplication and division boards"
+        ]
+      },
+      {
+        "id": "language",
+        "title": "Language",
+        "body": "A carefully graded phonics programme. In Montessori, many children write before they read.",
+        "examples": [
+          "Sandpaper letters and the moveable alphabet",
+          "Pink series: three-letter words",
+          "Blue series: blends",
+          "Green series: phonograms and digraphs, with early grammar"
+        ]
+      },
+      {
+        "id": "cultural",
+        "title": "Cultural studies",
+        "body": "Real objects and topic projects that connect children's surroundings to the wider world, including Malaysia's festivals.",
+        "examples": [
+          "Botany and zoology: plants, animals and life cycles",
+          "Geography: globes, puzzle maps and maps of Malaysia",
+          "History: calendars, timelines and clocks",
+          "Science: the body, magnetism, push and pull, cooking"
+        ]
+      },
+      {
+        "id": "creative-arts",
+        "title": "Creative arts",
+        "body": "Self-expression where the process matters more than the result.",
+        "examples": [
+          "Music and movement, rhythm and singing",
+          "Art and craft with water-based, non-toxic materials",
+          "Storytelling and role play",
+          "Speech and drama"
+        ]
+      }
+    ]
+  },
+  "enrichment": {
+    "eyebrow": "Enrichment",
+    "title": "Extra classes and projects",
+    "lead": "Alongside the Montessori day, children can join extra classes, take part in science projects and go on outings.",
+    "current": {
+      "title": "Classes",
+      "items": [
+        {
+          "name": "Speech and drama",
+          "body": "Storytelling, acting out poems and speaking with confidence."
+        },
+        {
+          "name": "Mandarin",
+          "body": "Mandarin, including Chinese character recognition."
+        },
+        {
+          "name": "Bahasa Malaysia",
+          "body": "Bahasa Malaysia reading and writing."
+        },
+        {
+          "name": "Science in English",
+          "body": "Science topics and experiments taught in English."
+        },
+        {
+          "name": "Art and music",
+          "body": "Drawing, painting, craft, rhythm and song."
+        }
+      ]
+    },
+    "ask": {
+      "title": "Ask us about",
+      "body": "These have run in past years. Ask us which are on this term.",
+      "items": [
+        "Music Gym",
+        "Gymnastics",
+        "Swimming",
+        "E-learning"
+      ]
+    },
+    "projects": {
+      "title": "Science projects and outings",
+      "body": "Past projects have included hatching chicks, watching butterflies grow from caterpillars, and testing materials. Past outings have included Aquaria KLCC, Petrosains, a fire station and an ostrich farm in Semenyih.",
+      "note": "Outings are planned during the year. Parents are told in advance, and outing costs are paid by parents."
+    }
+  },
+  "day": {
+    "eyebrow": "A day at PAC",
+    "title": "What a day looks like",
+    "lead": "Every class has its own rhythm, but most days follow this shape. Exact times depend on the programme.",
+    "steps": [
+      {
+        "time": "From 6:30 am",
+        "title": "Arrival",
+        "body": "Doors open for families who start work early."
+      },
+      {
+        "time": "Morning",
+        "title": "Montessori work cycle",
+        "body": "The heart of the day: a long, calm period where children choose and work with materials."
+      },
+      {
+        "time": "During the day",
+        "title": "Snack and outdoor play",
+        "body": "A shared snack time, and play in the garden."
+      },
+      {
+        "time": "During the day",
+        "title": "Thematic lesson and enrichment",
+        "body": "Group time for the current topic, songs and stories, or an extra class."
+      },
+      {
+        "time": "Midday",
+        "title": "Lunch",
+        "body": "A home-cooked lunch for children staying for the afternoon."
+      },
+      {
+        "time": "Afternoon",
+        "title": "Childcare",
+        "body": "Activities and play until parents arrive."
+      },
+      {
+        "time": "Until 7 pm",
+        "title": "Pick-up",
+        "body": "Dinner is provided for children staying late."
+      }
+    ],
+    "timesNote": "Class times: [DAILY TIMETABLE TO CONFIRM]",
+    "cycle": {
+      "title": "The work cycle, step by step",
+      "steps": [
+        {
+          "title": "Choose",
+          "body": "The child picks a material from the shelf, never from another child."
+        },
+        {
+          "title": "Work",
+          "body": "They work with it for as long as they like, without being interrupted."
+        },
+        {
+          "title": "Return",
+          "body": "They put it back, ready for the next child, then choose again."
+        }
+      ],
+      "note": "Over the year, these cycles grow longer. That growing concentration is one of the clearest signs of progress."
+    },
+    "video": {
+      "title": "Video tour",
+      "body": "A short video tour of our classrooms and garden.",
+      "play": "Play video",
+      "consent": "Playing the video loads YouTube, which may set cookies.",
+      "unavailable": "A video tour is coming soon. In the meantime, book a visit and see the classrooms for yourself."
+    }
+  },
+  "admissions": {
+    "eyebrow": "Admissions",
+    "title": "Joining PAC",
+    "lead": "Registration is open from May to November 2026. Here's how it works.",
+    "steps": [
+      {
+        "title": "Get in touch",
+        "body": "Message us on WhatsApp or book a visit online."
+      },
+      {
+        "title": "Visit",
+        "body": "See the classrooms, meet the teachers and ask anything."
+      },
+      {
+        "title": "Register",
+        "body": "Complete registration with us. Documents needed: [REGISTRATION DOCUMENTS TO CONFIRM]"
+      }
+    ],
+    "fees": {
+      "title": "Fees",
+      "body": "Fees depend on the programme and the hours your child attends. [FEES TO CONFIRM]",
+      "ask": "Message us for the current fee sheet. Ask what's included in each of these:",
+      "items": [
+        "Registration",
+        "Monthly fee",
+        "Materials and curriculum",
+        "Uniform and sports attire",
+        "Insurance",
+        "Enrichment classes",
+        "Meals (full-day children)",
+        "Outings, photos and graduation"
+      ],
+      "rules": "Monthly fees are due by the 7th of each month."
+    },
+    "transport": {
+      "title": "Transport",
+      "body": "Transport between home and PAC can be arranged.",
+      "areas": "Areas and fees: [TRANSPORT AREAS AND FEES TO CONFIRM]"
+    },
+    "rules": {
+      "title": "House rules at a glance",
+      "note": "This is a short summary. The full rules are given at registration.",
+      "items": [
+        "Please give one month's notice before withdrawing your child.",
+        "Collect your child within 30 minutes of the dismissal time, or let us know if you'll be late. An overtime charge may apply.",
+        "Children aged 4 and above wear the PAC uniform.",
+        "Each child's temperature is checked on arrival. Children with a fever, flu or anything contagious should stay home.",
+        "Please keep your child's vaccinations up to date.",
+        "No jewellery, money, phones or toys from home.",
+        "No outside food except special diets.",
+        "Birthday cakes are welcome at snack time."
+      ]
+    }
+  },
+  "visit": {
+    "eyebrow": "Book a visit",
+    "title": "Come and see PAC",
+    "lead": "Tell us a little about your child and when suits you. We'll reply to confirm a time.",
+    "whatsappTitle": "Prefer WhatsApp?",
+    "whatsappBody": "Message us directly and we'll arrange a time.",
+    "whatsappPrefill": "Hi Taska & Tadika PAC, I'd like to book a visit.",
+    "form": {
+      "parentName": "Your name",
+      "phone": "Phone number",
+      "phoneHint": "Malaysian mobile, for example 012-345 6789",
+      "email": "Email (optional)",
+      "ageBand": "Your child's age",
+      "ageOptions": {
+        "under2": "Under 2",
+        "2-3": "2 to 3",
+        "4-6": "4 to 6",
+        "unsure": "Not sure yet"
+      },
+      "date": "Preferred date",
+      "time": "Preferred time",
+      "timeOptions": {
+        "morning": "Weekday morning",
+        "afternoon": "Weekday afternoon",
+        "saturday": "Saturday morning"
+      },
+      "language": "Reply in",
+      "languageOptions": {
+        "en": "English",
+        "ms": "Bahasa Malaysia",
+        "zh": "中文"
+      },
+      "message": "Anything else we should know? (optional)",
+      "messageHint": "Please don't include your child's full name, MyKid number or medical details.",
+      "consent": "I agree that PAC may use these details to reply to me and arrange a visit, as described in the privacy notice.",
+      "privacyLink": "Read the privacy notice",
+      "submit": "Send request",
+      "sending": "Sending…",
+      "select": "Choose one",
+      "required": "Required"
+    },
+    "errors": {
+      "parentName": "Please enter your name.",
+      "phone": "Please enter a Malaysian phone number, for example 012-345 6789.",
+      "email": "Please check your email address.",
+      "ageBand": "Please choose your child's age.",
+      "date": "Please choose a date from tomorrow onwards.",
+      "time": "Please choose a time.",
+      "language": "Please choose a language.",
+      "message": "Please keep your message under 1,000 characters.",
+      "consent": "Please tick the box so we can reply to you.",
+      "spam": "We couldn't confirm you're not a robot. Please try again or WhatsApp us.",
+      "rate": "Too many requests from this connection. Please try again in a few minutes or WhatsApp us.",
+      "server": "Sorry, your request didn't go through. Please WhatsApp us instead.",
+      "summary": "Please fix the highlighted fields."
+    },
+    "success": {
+      "title": "Thank you. Your request has been sent.",
+      "body": "We'll reply to confirm a time. If it's urgent, WhatsApp us.",
+      "again": "Send another request"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Questions parents ask",
+    "items": [
+      {
+        "q": "What ages do you take?",
+        "a": "The Montessori Nursery is for ages 2 to 3, the Montessori Kindergarten for ages 4 to 6, and the Full Montessori class for ages 2 to 6 together. Childcare ages: [AGES TO CONFIRM]"
+      },
+      {
+        "q": "What are your opening hours?",
+        "a": "Monday to Friday, 6:30 am to 7 pm, and Saturday, 8 am to 1 pm. We're closed on Sundays and on federal and Selangor public holidays."
+      },
+      {
+        "q": "Where are you?",
+        "a": "We have two buildings on Jalan Anggerik Aranda, Kota Kemuning, Seksyen 31, 40460 Shah Alam. Taska PAC (nursery and childcare) is at No. 1, Jalan Anggerik Aranda 31/34, and Tadika PAC (kindergarten) is at No. 1, Jalan Anggerik Aranda 31/170C."
+      },
+      {
+        "q": "What does Montessori mean in practice?",
+        "a": "Children choose their own work from open shelves, learn with hands-on materials, and work at their own pace while teachers guide and observe. Classes are kept small."
+      },
+      {
+        "q": "Will my child be ready for Standard One?",
+        "a": "Six year olds join our bridging class, which focuses on reading, writing, speaking and problem solving in mathematics, following the National Preschool Curriculum (KSPK)."
+      },
+      {
+        "q": "Which languages do children learn?",
+        "a": "Children learn English, Bahasa Malaysia and Mandarin."
+      },
+      {
+        "q": "Are meals provided?",
+        "a": "Yes, for full-day children: a balanced, home-cooked lunch, and dinner for children staying late. [HALAL STATUS AND DIETARY OPTIONS TO CONFIRM]"
+      },
+      {
+        "q": "Do you provide transport?",
+        "a": "Transport can be arranged. [TRANSPORT AREAS AND FEES TO CONFIRM]"
+      },
+      {
+        "q": "How much are the fees?",
+        "a": "Fees depend on the programme and hours. [FEES TO CONFIRM] Message us on WhatsApp for the current fee sheet."
+      },
+      {
+        "q": "Can we visit before deciding?",
+        "a": "Please do. Book a visit online or send us a WhatsApp message, and we'll arrange a time to show you around."
+      },
+      {
+        "q": "When can my child start?",
+        "a": "Registration is open from May to November 2026. Ask us about places in the programme you're interested in."
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Find us and get in touch",
+    "lead": "Message us on WhatsApp, call, email, or come and visit.",
+    "phoneTitle": "Phone and WhatsApp",
+    "emailTitle": "Email",
+    "facebook": "Facebook",
+    "mapTitle": "Map",
+    "showMap": "Show map",
+    "mapConsent": "The map is provided by Google, which may set cookies when it loads.",
+    "transport": "Transport can be arranged. [TRANSPORT AREAS TO CONFIRM]"
+  },
+  "privacy": {
+    "eyebrow": "Privacy",
+    "title": "Privacy notice",
+    "updated": "Last updated: 26 October 2026",
+    "draft": "Draft for the centre to review before launch.",
+    "sections": [
+      {
+        "title": "Who we are",
+        "body": "Taska & Tadika PAC (\"PAC\", \"we\") runs a taska and a tadika at Jalan Anggerik Aranda, Kota Kemuning, 40460 Shah Alam, Selangor. This notice explains how we handle personal data under the Personal Data Protection Act 2010 (PDPA)."
+      },
+      {
+        "title": "What we collect on this website",
+        "body": "When you book a visit, we collect your name, phone number, email address if you give it, your child's age range, your preferred date and time, your message and the language you'd like us to reply in. We don't ask for your child's name, MyKid number or medical details on this website, and we ask you not to include them."
+      },
+      {
+        "title": "Why we collect it",
+        "body": "Only to reply to your enquiry and arrange a visit. We don't use it for marketing and we don't sell or share it."
+      },
+      {
+        "title": "Who processes it for us",
+        "body": "Your request is sent to us by email using Resend, an email delivery service. A spam check by Cloudflare Turnstile may run when you submit the form. These providers process data on our behalf and may be located outside Malaysia."
+      },
+      {
+        "title": "How long we keep it",
+        "body": "We keep enquiry emails for [RETENTION PERIOD TO CONFIRM] and then delete them, unless your child enrols, in which case the registration process applies."
+      },
+      {
+        "title": "Cookies",
+        "body": "This website uses no advertising or analytics cookies. We remember your language choice in one small cookie. The map and the video tour only load, and Google or YouTube may only set cookies, after you click to show them."
+      },
+      {
+        "title": "Your rights",
+        "body": "You can ask to see, correct or delete the personal data we hold about you, or withdraw your consent, by emailing amypac2008@gmail.com or calling 016-272 9666."
+      }
+    ]
+  },
+  "notFound": {
+    "title": "We couldn't find that page",
+    "body": "It may have moved when our website was updated.",
+    "home": "Go to the home page"
+  }
+}
