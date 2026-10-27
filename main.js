@@ -64,8 +64,12 @@
 
   $$('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));
 
+  // These work the same whether or not the animation libraries load
+  initMomentThumbs();
+  initShelfPhotos();
+
   // ---------------------------------------------------------------------------
-  // Without GSAP (blocked CDN), keep the page fully usable
+  // Without GSAP (a script failed to load), keep the page fully usable
   // ---------------------------------------------------------------------------
   if (!window.gsap || !window.ScrollTrigger) {
     root.classList.add('ready');
@@ -74,6 +78,12 @@
     initMap();
     initAlbums(null);
     initMenu(null);
+    initThemeObserver();
+    if (window.PACCharts) {
+      window.PACCharts.years($('#chart-years'));
+      window.PACCharts.themes($('#chart-themes'));
+      window.PACCharts.week($('#chart-week'));
+    }
     return;
   }
 
@@ -251,11 +261,6 @@
     if (!sec || reduce) return;
     sec.classList.add('is-pinned');
     const track = $('.areas__track', sec);
-    // The shelf slides sideways quickly, so fetch its photos before it arrives
-    ScrollTrigger.create({
-      trigger: sec, start: 'top bottom+=1200', once: true,
-      onEnter: () => $$('.area__photo img', sec).forEach((img) => (img.loading = 'eager')),
-    });
     const dist = () => Math.max(0, track.scrollWidth - innerWidth);
 
     const slide = gsap.to(track, {
@@ -305,19 +310,7 @@
     const list = $('.moments__list');
     if (!list) return;
     const rows = $$('.moment', list);
-    if (!finePointer) {
-      rows.forEach((row) => {
-        const img = new Image();
-        img.className = 'moment__thumb';
-        img.src = row.dataset.img;
-        img.alt = '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        img.width = 64; img.height = 64;
-        $('.moment__open', row).prepend(img);
-      });
-      return;
-    }
+    if (!finePointer) return;
     const peek = $('.peek');
     const img = $('img', peek);
     gsap.set(peek, { xPercent: 0, yPercent: -50, scale: 0.86 });
@@ -553,6 +546,49 @@
     update(Number(input.value), false);
     // Preload the other room photos
     Object.values(ROOMS).forEach((r) => { const i = new Image(); i.src = r.img; });
+  }
+
+  // On touch screens there is no hover preview, so each album row shows a thumbnail
+  function initMomentThumbs() {
+    if (finePointer) return;
+    $$('.moment').forEach((row) => {
+      const img = new Image();
+      img.className = 'moment__thumb';
+      img.src = row.dataset.img;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.width = 64; img.height = 64;
+      $('.moment__open', row)?.prepend(img);
+    });
+  }
+
+  // The curriculum shelf moves sideways, where lazy images can arrive late;
+  // start fetching its photos as soon as the section is about a screen away
+  function initShelfPhotos() {
+    const sec = $('.areas');
+    if (!sec) return;
+    const load = () => $$('.area__photo img', sec).forEach((img) => (img.loading = 'eager'));
+    if (!('IntersectionObserver' in window)) return load();
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { load(); io.disconnect(); }
+    }, { rootMargin: '1200px 0px' });
+    io.observe(sec);
+  }
+
+  // Section colours without GSAP: switch the theme as each section crosses the middle of the screen
+  function initThemeObserver() {
+    if (!('IntersectionObserver' in window)) return;
+    const meta = $('meta[name="theme-color"]');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const name = e.target.dataset.ground;
+        root.dataset.theme = name;
+        if (meta) meta.content = THEME_COLORS[name] || THEME_COLORS.pink;
+      });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    $$('[data-ground]').forEach((sec) => io.observe(sec));
   }
 
   // Album viewer: each "favourite" opens its photos full screen

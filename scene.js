@@ -3,9 +3,9 @@
    solids, colour tablets and brown stair) rendered with Three.js behind the whole page.
    Each section ("chapter") arranges the materials differently; scrolling blends between
    arrangements, some of which are pinned to page elements so they travel with the content. */
-import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import * as THREE from './three.module.min.js';
+import { RoundedBoxGeometry } from './RoundedBoxGeometry.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
 
 const canvas = document.getElementById('scene');
 const stage = canvas?.parentElement;
@@ -563,7 +563,7 @@ function start() {
   function loop(dt) {
     step(dt, false);
     renderer.render(scene, camera);
-    if (!shown) { shown = true; stage.classList.add('is-live'); }
+    if (!shown) { shown = true; stage.classList.add('is-live'); document.documentElement.classList.add('has-scene'); }
     // Drop the pixel ratio once if the device is struggling
     if (frames < 120) {
       frames++;
@@ -596,6 +596,7 @@ function start() {
     stage.classList.add('is-static');
     renderOnce();
     stage.classList.add('is-live');
+    document.documentElement.classList.add('has-scene');
     return;
   }
 

@@ -39,6 +39,9 @@ Other moments: the headline is coloured like the Montessori movable alphabet (co
 | `package.json`, `build.mjs` | `npm run build` copies the public files into `dist/` (nothing is compiled) |
 | `wrangler.jsonc` | Tells Cloudflare to serve `dist/` from the Worker named `taksapac` |
 | `.gitignore` | Keeps the generated `dist/` folder out of Git |
+| `gsap.min.js`, `ScrollTrigger.min.js`, `SplitText.min.js`, `lenis.min.js` | Animation and smooth-scroll libraries (see Libraries) |
+| `three.module.min.js`, `three.core.min.js`, `RoundedBoxGeometry.js`, `RoomEnvironment.js` | Three.js for the 3D background |
+| `lexend-latin.woff2`, `playwrite-gb-s.woff2` | The two fonts |
 
 ## Deploy
 
@@ -114,17 +117,19 @@ Everything on the page came from the centre's own website, its two Facebook page
 - **Programmes shown by the age picker:** `ROOMS` in `main.js`.
 - **Chart data:** `YEARS` and `ALBUMS` in `charts.js`.
 - **3D arrangements:** the `pose()` function in `scene.js`, one `case` per section.
-- **Security headers:** `_headers` allows only the two small inline scripts at the top of `index.html`, by hash. If you change either of them, open the page, read the Content Security Policy error in the browser console (it prints the new `sha256-...` value), and replace the old value in `_headers`.
+- **Security headers:** `_headers` only lets the page load scripts, styles, fonts and images from the site itself, plus the one small inline script at the top of `index.html`, by hash. If you change that script, open the page, read the Content Security Policy error in the browser console (it prints the new `sha256-...` value), and replace the old value in `_headers`.
 
 ## Libraries
 
-All loaded from jsDelivr with pinned versions and integrity hashes:
+Everything is served from the site itself, so the page never depends on another server (some networks, phone browsers and content filters block public CDNs, which stops the 3D background and animations from loading). The files are the official builds, checked against their published integrity hashes when they were added:
 
-- GSAP 3.15.0 with ScrollTrigger and SplitText
-- Lenis 1.3.26 (smooth scroll by darkroom.engineering)
-- Three.js r180
+- GSAP 3.15.0 with ScrollTrigger and SplitText (`gsap.min.js`, `ScrollTrigger.min.js`, `SplitText.min.js`)
+- Lenis 1.3.26, smooth scroll by darkroom.engineering (`lenis.min.js`)
+- Three.js r180 (`three.module.min.js`, `three.core.min.js`, and the `RoundedBoxGeometry.js` and `RoomEnvironment.js` add-ons). In the two add-ons, the line `from 'three'` was changed to `from './three.module.min.js'` so no import map is needed, which also lets the 3D scene run on iPhones older than iOS 16.4.
 
-Fonts: Lexend (designed to make reading easier) and Playwrite GB S (school handwriting) from Google Fonts.
+Fonts: Lexend (designed to make reading easier) and Playwrite GB S (school handwriting), Latin subset, from Google Fonts under the SIL Open Font License, served as `lexend-latin.woff2` and `playwrite-gb-s.woff2`.
+
+If scripts fail to load anyway, the page still works: photos, charts, album viewer, section colours, the age picker and the enquiry form all run without the animation libraries.
 
 ## Accessibility and performance
 
@@ -133,4 +138,4 @@ Fonts: Lexend (designed to make reading easier) and Playwrite GB S (school handw
 - Every chart has a hidden data table for screen readers; the ring segments and bars work with the keyboard.
 - Colour pairs meet WCAG AA contrast. Focus outlines are visible on every control.
 - The 3D scene caps pixel density, drops resolution on slow devices, and pauses when the tab is hidden.
-- The Google map only loads when someone presses **Show the map**, so Google cookies are not set on page load.
+- The page makes no requests to other servers when it loads. The Google map only loads when someone presses **Show the map**, so Google cookies are not set on page load.
