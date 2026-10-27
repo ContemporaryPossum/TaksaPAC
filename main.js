@@ -72,6 +72,7 @@
     initAgeRod(null);
     initForm();
     initMap();
+    initAlbums(null);
     initMenu(null);
     return;
   }
@@ -313,7 +314,7 @@
         img.loading = 'lazy';
         img.decoding = 'async';
         img.width = 64; img.height = 64;
-        row.prepend(img);
+        $('.moment__open', row).prepend(img);
       });
       return;
     }
@@ -327,6 +328,7 @@
       gsap.to(peek, { autoAlpha: 1, scale: 1, rotate: gsap.utils.random(-5, 5), duration: reduce ? 0 : 0.4, ease: 'expo.out', overwrite: 'auto' });
     };
     const hide = () => gsap.to(peek, { autoAlpha: 0, scale: 0.86, duration: reduce ? 0 : 0.25, ease: 'power2.out', overwrite: 'auto' });
+    PAC.hidePeek = hide;
     list.addEventListener('pointermove', (e) => {
       // Ride along the empty middle of the list so the photo never covers a title
       const r = list.getBoundingClientRect();
@@ -369,6 +371,7 @@
   }
   initForm();
   initMap();
+  initAlbums(gsap);
 
   // ---------------------------------------------------------------------------
   // Pause control for everything that moves on its own (3D idle motion, pulses)
@@ -550,6 +553,129 @@
     update(Number(input.value), false);
     // Preload the other room photos
     Object.values(ROOMS).forEach((r) => { const i = new Image(); i.src = r.img; });
+  }
+
+  // Album viewer: each "favourite" opens its photos full screen
+  function initAlbums(g) {
+    const dialog = $('#album');
+    const data = window.PAC_ALBUMS;
+    if (!dialog || !data || typeof dialog.showModal !== 'function') return;
+    const keys = Object.keys(data);
+    const img = $('.album__img', dialog);
+    const thumbs = $('.album__thumbs', dialog);
+    const stage = $('.album__stage', dialog);
+    let key = null;
+    let index = 0;
+    let trigger = null;
+    let seq = 0;
+
+    function render(k) {
+      const a = data[k];
+      key = k;
+      $('.album__title', dialog).textContent = a.title;
+      $('.album__sub', dialog).textContent = `${a.theme}, ${a.year}. Showing ${a.photos.length} of the ${a.total} photos in the original album.`;
+      $('.album__text', dialog).textContent = a.text;
+      thumbs.replaceChildren(...a.photos.map(([src, text], i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', `Photo ${i + 1}: ${text}`);
+        const t = new Image();
+        t.src = src; t.alt = ''; t.decoding = 'async'; t.width = 64; t.height = 48;
+        b.append(t);
+        b.addEventListener('click', () => show(i, i > index ? 1 : -1));
+        return b;
+      }));
+      const next = data[keys[(keys.indexOf(k) + 1) % keys.length]];
+      $('.album__next', dialog).textContent = `Next album: ${next.title}`;
+    }
+
+    function show(i, dir = 0) {
+      const photos = data[key].photos;
+      index = (i + photos.length) % photos.length;
+      const [src, text] = photos[index];
+      $('.album__count', dialog).textContent = `${index + 1} / ${photos.length}`;
+      $('.album__alt', dialog).textContent = text;
+      $$('button', thumbs).forEach((b, k) => b.setAttribute('aria-current', String(k === index)));
+      $$('button', thumbs)[index]?.scrollIntoView({ block: 'nearest', inline: 'center' });
+      // Load first so the swap never flashes (giving up waiting after 1.5 s);
+      // ignore photos the viewer has already moved past
+      const token = ++seq;
+      const swap = () => {
+        if (token !== seq || img.getAttribute('src') === src) return;
+        img.src = src;
+        img.alt = text;
+        if (g && !reduce) g.fromTo(img, { autoAlpha: 0, x: 36 * dir }, { autoAlpha: 1, x: 0, duration: dir ? 0.5 : 0.35, ease: 'expo.out', overwrite: true });
+      };
+      const pre = new Image();
+      pre.onload = pre.onerror = swap;
+      pre.src = src;
+      if (pre.complete) swap();
+      setTimeout(swap, 1500);
+      [index + 1, index - 1].forEach((n) => { new Image().src = photos[(n + photos.length) % photos.length][0]; });
+    }
+
+    function open(k, from) {
+      if (!data[k]) return;
+      trigger = from || null;
+      render(k);
+      show(0);
+      PAC.hidePeek?.();
+      history.replaceState(null, '', `#album-${k}`);
+      if (dialog.open) return;
+      dialog.showModal();
+      root.classList.add('album-open');
+      PAC.lenis?.stop();
+      if (g && !reduce) g.fromTo(dialog, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3, ease: 'power2.out' });
+    }
+
+    // Tidy up straight away rather than waiting for the dialog's async close event
+    function cleanup() {
+      if (!root.classList.contains('album-open')) return;
+      root.classList.remove('album-open');
+      PAC.lenis?.start();
+      history.replaceState(null, '', '#moments');
+      trigger?.focus({ preventScroll: true });
+    }
+    function close() {
+      if (dialog.open) dialog.close();
+      cleanup();
+    }
+    dialog.addEventListener('close', cleanup);
+    dialog.addEventListener('cancel', (e) => { e.preventDefault(); close(); });
+    $('.album__close', dialog).addEventListener('click', close);
+    $('.album__nav--prev', dialog).addEventListener('click', () => show(index - 1, -1));
+    $('.album__nav--next', dialog).addEventListener('click', () => show(index + 1, 1));
+    $('.album__next', dialog).addEventListener('click', () => {
+      render(keys[(keys.indexOf(key) + 1) % keys.length]);
+      show(0, 1);
+      history.replaceState(null, '', `#album-${key}`);
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1, 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1, -1); }
+    });
+
+    // Swipe left or right on touch screens; vertical drags still scroll as normal
+    let x0 = null;
+    stage.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') x0 = e.clientX; });
+    stage.addEventListener('pointercancel', () => (x0 = null));
+    stage.addEventListener('pointerup', (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 45) show(index + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    });
+
+    $$('.moment').forEach((row) => {
+      $('.moment__open', row)?.addEventListener('click', (e) => open(row.dataset.album, e.currentTarget));
+    });
+
+    // A shared link like /#album-bomba opens that album straight away
+    const fromHash = location.hash.match(/^#album-(\w+)$/);
+    if (fromHash && data[fromHash[1]]) {
+      const row = $(`.moment[data-album="${fromHash[1]}"] .moment__open`);
+      open(fromHash[1], row);
+    }
   }
 
   function initMap() {

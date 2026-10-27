@@ -367,39 +367,73 @@
 
         <div class="moments">
           <h3 class="moments__title">A few favourites from the albums</h3>
+          <p class="moments__hint">Open an album to look through its photos.</p>
           <ul class="moments__list">
-            <li class="moment" data-img="photo-chicks-hatching.jpg">
-              <span class="moment__name">Hatching chicks in the classroom</span><span class="moment__theme">Science</span><span class="moment__year">2014, 2015</span>
+            <li class="moment" data-album="chicks" data-img="photo-chicks-hatching.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Hatching chicks in the classroom</span><span class="moment__theme">Science</span><span class="moment__year">2014, 2015</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-bomba-visit.jpg">
-              <span class="moment__name">A morning with the Bomba</span><span class="moment__theme">Outing</span><span class="moment__year">2018</span>
+            <li class="moment" data-album="bomba" data-img="photo-bomba-visit.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">A morning with the Bomba</span><span class="moment__theme">Outing</span><span class="moment__year">2018</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-botanic-negara.jpg">
-              <span class="moment__name">Botanic Negara, Shah Alam</span><span class="moment__theme">Outing</span><span class="moment__year">2015</span>
+            <li class="moment" data-album="botanic" data-img="photo-botanic-negara.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Botanic Negara, Shah Alam</span><span class="moment__theme">Outing</span><span class="moment__year">2015</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-petrosains.jpg">
-              <span class="moment__name">Petrosains, KLCC</span><span class="moment__theme">Outing</span><span class="moment__year">2016</span>
+            <li class="moment" data-album="petrosains" data-img="photo-petrosains.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Petrosains, KLCC</span><span class="moment__theme">Outing</span><span class="moment__year">2016</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-deepavali.jpg">
-              <span class="moment__name">Deepavali cultural presentation</span><span class="moment__theme">Festival</span><span class="moment__year">2018</span>
+            <li class="moment" data-album="deepavali" data-img="photo-deepavali.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Deepavali cultural presentation</span><span class="moment__theme">Festival</span><span class="moment__year">2018</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-chap-goh-meh.jpg">
-              <span class="moment__name">Chap Goh Meh celebration</span><span class="moment__theme">Festival</span><span class="moment__year">2019</span>
+            <li class="moment" data-album="chapgohmeh" data-img="photo-chap-goh-meh.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Chap Goh Meh celebration</span><span class="moment__theme">Festival</span><span class="moment__year">2019</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-kuih-bakul.jpg">
-              <span class="moment__name">Cooking kuih bakul for Chinese New Year</span><span class="moment__theme">Food</span><span class="moment__year">2016</span>
+            <li class="moment" data-album="kuihbakul" data-img="photo-kuih-bakul.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Cooking kuih bakul for Chinese New Year</span><span class="moment__theme">Food</span><span class="moment__year">2016</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-butterflies.jpg">
-              <span class="moment__name">The life cycle of butterflies</span><span class="moment__theme">Science</span><span class="moment__year">2014, 2015</span>
+            <li class="moment" data-album="butterflies" data-img="photo-butterflies.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">The life cycle of butterflies</span><span class="moment__theme">Science</span><span class="moment__year">2014, 2015</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-swimming.jpg">
-              <span class="moment__name">Swimming lessons</span><span class="moment__theme">Movement</span><span class="moment__year">2019</span>
+            <li class="moment" data-album="swimming" data-img="photo-swimming.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Swimming time</span><span class="moment__theme">Movement</span><span class="moment__year">2019</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-ostrich-farm.jpg">
-              <span class="moment__name">Ostrich farm, Semenyih</span><span class="moment__theme">Outing</span><span class="moment__year">2019</span>
+            <li class="moment" data-album="ostrich" data-img="photo-ostrich-farm.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">Ostrich farm, Semenyih</span><span class="moment__theme">Outing</span><span class="moment__year">2019</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
-            <li class="moment" data-img="photo-kidzania.jpg">
-              <span class="moment__name">KidZania</span><span class="moment__theme">Outing</span><span class="moment__year">2012</span>
+            <li class="moment" data-album="kidzania" data-img="photo-kidzania.jpg">
+              <button class="moment__open" type="button" aria-haspopup="dialog">
+                <span class="moment__name">KidZania</span><span class="moment__theme">Outing</span><span class="moment__year">2012</span>
+                <span class="moment__go" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg></span>
+              </button>
             </li>
           </ul>
           <div class="peek" aria-hidden="true"><img alt="" width="800" height="600"></div>
@@ -526,12 +560,42 @@
     <span>Pause motion</span>
   </button>
 
+  <dialog class="album" id="album" aria-labelledby="album-title" data-lenis-prevent>
+    <div class="album__bar">
+      <div class="album__head">
+        <h2 class="album__title" id="album-title"></h2>
+        <p class="album__sub"></p>
+      </div>
+      <button class="album__close" type="button" aria-label="Close album">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+    </div>
+    <div class="album__stage">
+      <button class="album__nav album__nav--prev" type="button" aria-label="Previous photo">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M13 4l-6 6 6 6"/></svg>
+      </button>
+      <figure class="album__figure">
+        <img class="album__img" alt="" decoding="async">
+      </figure>
+      <button class="album__nav album__nav--next" type="button" aria-label="Next photo">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="album__foot">
+      <p class="album__caption" aria-live="polite"><span class="album__count"></span> <span class="album__alt"></span></p>
+      <div class="album__thumbs" role="group" aria-label="Photos in this album"></div>
+      <p class="album__text"></p>
+      <button class="album__next btn btn--small btn--accent" type="button">Next album</button>
+    </div>
+  </dialog>
+
   <div class="tip" role="presentation" aria-hidden="true"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" integrity="sha384-XmJ9SoHtVOHoQUcKvFAzVXwdkKo1Ie3bhmSoIAkcdsHGaIrVJIkmozyq0FJeb/Ly" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" integrity="sha384-wl5TeDVvOWt30Pbf8aSo2ZrzsOjddu3avOBvHe+p+OhJt9gP6w9YXmDkN5DK2/dF" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" integrity="sha384-SWJ0lLVRoipvHh59xj0pL7uC7Ih51F+5smaFtrG+2nr+TlDZU5SYJHmxfolbeNTr" crossorigin="anonymous" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" integrity="sha384-jqpi9VmOdhyLoLURgjCn7EpnG9BbnHW57ibIZoeaIU+erWDH3k8fQQg0xH2ySjnw" crossorigin="anonymous" defer></script>
+  <script src="albums.js" defer></script>
   <script src="charts.js" defer></script>
   <script src="main.js" defer></script>
   <script src="scene.js" type="module"></script>

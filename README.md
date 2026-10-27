@@ -32,6 +32,7 @@ Other moments: the headline is coloured like the Montessori movable alphabet (co
 | `favicon.svg`, `apple-touch-icon.png` | Browser and phone icons |
 | `og-image.png` | Preview image shown when the link is shared on WhatsApp or Facebook |
 | `photo-*.jpg` (20 files) | The centre's own photos, compressed (see Photos below) |
+| `albums.js`, `album-*.jpg` (54 files) | The 11 albums that open from "A few favourites from the albums" |
 | `site.webmanifest`, `robots.txt`, `sitemap.xml` | Standard site files |
 | `404.html` | Page shown for broken links |
 | `_headers` | Cloudflare security headers and caching rules |
@@ -80,6 +81,14 @@ The 20 `photo-*.jpg` files are the centre's own pictures, taken from the photo a
 | `photo-swimming.jpg` | Moments |
 | `photo-ostrich-farm.jpg` | Moments |
 | `photo-kidzania.jpg` | Moments |
+
+### Albums
+
+Each row under "A few favourites from the albums" opens a full-screen album: arrows, swipe, keyboard and thumbnails move between photos, and "Next album" steps through all 11. Each album shows up to 6 photos: the row's photo above plus `album-<name>-2.jpg` to `-6.jpg`, picked from the matching album on the old site, compressed the same way (54 files, about 3.7 MB, loaded only when an album is opened). Photos that weren't real photos (screenshots, greeting graphics) were left out.
+
+Titles, descriptions, years, alt text and the original album sizes live in `albums.js`. To add or swap a photo, add its file and its line there. A link such as `https://www.taskapac.com/#album-bomba` opens that album directly, which is handy for sharing on WhatsApp.
+
+### Swapping photos
 
 To swap a photo, upload a new file with the same name, or change the file name in `index.html` (and in the `ROOMS` list in `main.js` for the three Programmes photos). Several of the originals are small (450 × 600) WhatsApp pictures, so newer, larger photos from the centre (2023 to 2026) would make the page stronger. The newest public album is from 2020.
 
