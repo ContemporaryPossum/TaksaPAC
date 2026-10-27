@@ -1,0 +1,25 @@
+// Cloudflare Workers config for the OpenNext build.
+// "name" must match the Worker's name in the Cloudflare dashboard
+// (Workers & Pages > your Worker). Change both "name" and the service below if it differs.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "taksapac",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-20",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "taksapac"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  // Keep variables set in the dashboard (Settings > Variables and secrets) on every deploy.
+  "keep_vars": true
+}

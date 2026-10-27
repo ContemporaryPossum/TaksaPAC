@@ -51,3 +51,9 @@ exports/
 
 # local preview config (machine-specific paths)
 .claude/
+
+# cloudflare / opennext
+.open-next
+.wrangler
+.dev.vars
+cloudflare-env.d.ts

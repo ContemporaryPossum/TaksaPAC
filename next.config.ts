@@ -28,9 +28,13 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Every page is static, so Cache Components (partial prerendering) is off:
+  // plain static generation is what the Cloudflare adapter handles best.
+  cacheComponents: false,
   poweredByHeader: false,
+  // Footer copyright year, fixed at build time. Pages are fully prerendered,
+  // which suits Cloudflare's static-assets cache (no runtime "use cache").
+  env: { BUILD_YEAR: String(new Date().getFullYear()) },
   turbopack: {
     rules: {
       "*.css": {

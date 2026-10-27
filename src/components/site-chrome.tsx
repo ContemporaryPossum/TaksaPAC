@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cacheLife } from "next/cache";
 import { MailIcon, MessageCircleIcon, PhoneIcon } from "lucide-react";
 
 import { Lockup } from "@/components/brand";
@@ -48,14 +47,9 @@ export function SiteHeader({ lang, t }: { lang: Locale; t: Dictionary }) {
   );
 }
 
-async function copyrightYear() {
-  "use cache";
-  cacheLife("days");
-  return new Date().getFullYear();
-}
-
-export async function SiteFooter({ lang, t }: { lang: Locale; t: Dictionary }) {
-  const year = await copyrightYear();
+export function SiteFooter({ lang, t }: { lang: Locale; t: Dictionary }) {
+  // Set in next.config.ts at build time, so it moves on with every deploy.
+  const year = process.env.BUILD_YEAR;
   const explore: NavItem[] = [
     ...mainNav(lang, t),
     { href: href(lang, "enrichment"), label: t.nav.enrichment },
