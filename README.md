@@ -134,7 +134,7 @@ If scripts fail to load anyway, the page still works: photos, charts, album view
 ## Accessibility and performance
 
 - `prefers-reduced-motion` turns off smooth scroll, pinning and the moving 3D scene. The page then shows a still 3D tower and every section in its final state.
-- A **Pause motion** button (bottom left) stops everything that moves on its own, and remembers the choice.
+- A **Pause motion** button (bottom left) makes the 3D background completely still: the pink tower freezes in the hero and scrolls away with the page, the shapes stop reacting to the mouse and to scrolling, and the pulsing dots stop. **Play motion** brings it back. The choice is remembered on that device. Scrolling the page itself, and the text and photo reveals that follow it, still work while paused.
 - Every chart has a hidden data table for screen readers; the ring segments and bars work with the keyboard.
 - Colour pairs meet WCAG AA contrast. Focus outlines are visible on every control.
 - The 3D scene caps pixel density, drops resolution on slow devices, and pauses when the tab is hidden.

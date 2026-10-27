@@ -174,6 +174,9 @@ function start() {
   const chapters = [...document.querySelectorAll('[data-chapter]')].sort((a, b) => a.dataset.chapter - b.dataset.chapter);
   const LAST = chapters.length - 1;
   const rects = new Map();
+  // "Still": the scene is drawn once as a picture of the hero and doesn't move at all.
+  // Used for reduced-motion visitors, and while the Pause motion button is on.
+  let still = reduce;
 
   function resize() {
     const w = innerWidth, h = innerHeight;
@@ -187,13 +190,21 @@ function start() {
     view.hH = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.length();
     view.hW = view.hH * view.aspect;
     renderer.setSize(w, h, false);
-    if (reduce) renderOnce();
+    if (still) renderOnce();
   }
 
-  // Read element rects once per frame (cheap, no layout changes in between)
+  // Where each anchor sits in layout, ignoring transforms (for the still hero picture)
+  function pageRect(el) {
+    let top = 0, left = 0;
+    for (let n = el; n; n = n.offsetParent) { top += n.offsetTop; left += n.offsetLeft; }
+    return { top, left, width: el.offsetWidth, height: el.offsetHeight };
+  }
+
+  // Read element rects once per frame (cheap, no layout changes in between). When the scene
+  // is still, it is drawn once onto a canvas fixed to the top of the page, so measure from there.
   function readRects() {
     rects.clear();
-    for (const k in anchors) if (anchors[k]) rects.set(k, anchors[k].getBoundingClientRect());
+    for (const k in anchors) if (anchors[k]) rects.set(k, still ? pageRect(anchors[k]) : anchors[k].getBoundingClientRect());
   }
   const ax = (k, f) => { const r = rects.get(k); return r ? (((r.left + r.width * f) / view.w) * 2 - 1) * view.hW : 0; };
   const ay = (k, f) => { const r = rects.get(k); return r ? -(((r.top + r.height * f) / innerHeight) * 2 - 1) * view.hH : 0; };
@@ -451,7 +462,7 @@ function start() {
     const paused = !!window.PAC?.paused;
     if (!paused) ctx.time += dt;
     readRects();
-    const c = reduce ? 0 : chapterValue();
+    const c = still ? 0 : chapterValue();
     const i0 = Math.min(LAST, Math.floor(c));
     const local = c - i0;
     const i1 = Math.min(LAST, i0 + 1);
@@ -483,11 +494,11 @@ function start() {
         r.tA.s += (r.tB.s - r.tA.s) * w;
       }
       // Opening: the tower is placed one cube at a time, largest first
-      if (r.group === 'tower' && !reduce && i0 === 0) {
+      if (r.group === 'tower' && !still && i0 === 0) {
         const delay = 0.35 + (9 - r.idx) * 0.13;
         if (sinceStart < delay) r.tA.p.y += 9;
       }
-      if (!started || snap) { r.pos.copy(r.tA.p); r.rot.copy(r.tA.r); r.s = r.tA.s; if (!started && r.group === 'tower' && !reduce) r.pos.y += 9; }
+      if (!started || snap) { r.pos.copy(r.tA.p); r.rot.copy(r.tA.r); r.s = r.tA.s; if (!started && r.group === 'tower' && !still) r.pos.y += 9; }
       else {
         const kk = r.group === 'tower' && i0 === 0 && sinceStart < 3 ? 1 - Math.exp(-7 * dt) : k;
         r.pos.lerp(r.tA.p, kk);
@@ -560,10 +571,29 @@ function start() {
   }
 
   let shown = false;
+  function markShown() {
+    if (shown) return;
+    shown = true;
+    stage.classList.add('is-live');
+    document.documentElement.classList.add('has-scene');
+  }
+
+  // Pause motion: draw the hero once and stop; Play: carry on from the hero arrangement
+  function setStill(on) {
+    still = on;
+    stage.classList.toggle('is-static', on);
+    if (on) renderOnce();
+    else clock.getDelta();
+    markShown();
+  }
+
   function loop(dt) {
+    const paused = !!window.PAC?.paused;
+    if (paused !== still) setStill(paused);
+    if (still) return;
     step(dt, false);
     renderer.render(scene, camera);
-    if (!shown) { shown = true; stage.classList.add('is-live'); document.documentElement.classList.add('has-scene'); }
+    markShown();
     // Drop the pixel ratio once if the device is struggling
     if (frames < 120) {
       frames++;
@@ -593,10 +623,7 @@ function start() {
   });
 
   if (reduce) {
-    stage.classList.add('is-static');
-    renderOnce();
-    stage.classList.add('is-live');
-    document.documentElement.classList.add('has-scene');
+    setStill(true);
     return;
   }
 
