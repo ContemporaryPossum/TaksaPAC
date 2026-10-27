@@ -1,0 +1,8 @@
+{
+  "name": "taksapac",
+  "private": true,
+  "description": "Taska & Tadika PAC website: a static site served from Cloudflare Workers static assets.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

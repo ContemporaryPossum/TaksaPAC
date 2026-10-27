@@ -1,0 +1,13 @@
+// Cloudflare Workers config: serves the files that `npm run build` copies into dist/.
+// "name" must match the Worker's name in the Cloudflare dashboard (Workers & Pages > taksapac).
+{
+  "name": "taksapac",
+  "compatibility_date": "2026-10-20",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

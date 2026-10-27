@@ -1,7 +1,7 @@
 # Taska & Tadika PAC website
 
 A one-page site for Taska & Tadika, Pusat Jaga Kanak Kanak PAC (Kota Kemuning, Shah Alam).
-Plain HTML, CSS and JavaScript with no build step. Every file sits at the top level, so you can drag the whole set into a GitHub repository and deploy it on Cloudflare Pages as it is.
+Plain HTML, CSS and JavaScript with nothing to compile. Every file sits at the top level, and Cloudflare serves the site from a Worker (see Deploy).
 
 ## The idea
 
@@ -35,14 +35,24 @@ Other moments: the headline is coloured like the Montessori movable alphabet (co
 | `site.webmanifest`, `robots.txt`, `sitemap.xml` | Standard site files |
 | `404.html` | Page shown for broken links |
 | `_headers` | Cloudflare security headers and caching rules |
+| `package.json`, `build.mjs` | `npm run build` copies the public files into `dist/` (nothing is compiled) |
+| `wrangler.jsonc` | Tells Cloudflare to serve `dist/` from the Worker named `taksapac` |
+| `.gitignore` | Keeps the generated `dist/` folder out of Git |
 
 ## Deploy
 
-1. Create a new GitHub repository. Click **Add file**, then **Upload files**, drag in every file above, and commit.
-2. In Cloudflare, open **Workers & Pages**, then **Create**, then **Pages**, then **Connect to Git**, and pick the repository.
-3. Set **Framework preset** to `None`, leave **Build command** empty, and set **Build output directory** to `/`.
-4. Deploy. Cloudflare reads `_headers` automatically.
-5. Add the custom domain (`taskapac.com` and `www.taskapac.com`) under the project's **Custom domains** tab.
+The repository [ContemporaryPossum/TaksaPAC](https://github.com/ContemporaryPossum/TaksaPAC) is connected to the Cloudflare Worker **taksapac**. Every push to `main` builds and deploys automatically with the dashboard's default commands, so there is nothing to change in Cloudflare:
+
+| Setting (Workers & Pages → taksapac → Settings → Builds) | Value |
+| --- | --- |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+
+`npm run build` copies every public file into `dist/`, leaving out `README.md` and the config files, and `npx wrangler deploy` serves `dist/` as static assets, applying `_headers` and `404.html`. No packages are installed and no secrets are needed.
+
+**Custom domain.** In **Workers & Pages → taksapac → Settings → Domains & Routes → Add → Custom domain**, add `www.taskapac.com` (and `taskapac.com`). The domain's DNS must be on Cloudflare.
+
+**Using Cloudflare Pages instead.** Connect the repository in **Workers & Pages → Create → Pages**, set the build command to `npm run build` and the build output directory to `dist`.
 
 ## Photos
 
